@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Electron App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styleChats.css">
+
+</head>
+
+<body>
+    <div id="containerLeftbar">
+        <div id="containerTop">
+            <div id="account">
+                <a href="#"><img class="topbarImages" src="images/groupChat.png" alt="A description of the image"></a>
+            </div>
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="Search...">
+            </form>
+            <div id="newMessage">
+                <a href="#"><img class="topbarImages" src="images/new-message.png" alt="A description of the image"></a>
+            </div>
+
+        </div>
+        <div class="containerChats">
+
+            <script>
+                for (let i = 0; i < 50; i++) {
+                    let div = `<a href="#"> <div class="containerChat">   <img class="groupChatImage" src="images/groupChat.png" alt="A description of the image">
+                        <div class="groupChatText"> <p class="groupName">Nom</p>  <p class="lastMessage">Dernier message</p>  </div> </div>  </a>`
+                    document.write(div)
+                }
+            </script>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
