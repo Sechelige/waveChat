@@ -8,7 +8,7 @@ document.body.appendChild(container)
 var request = new XMLHttpRequest()
 var dataResp;
 
-request.open('GET', 'http://localhost:8080/app/user', true)
+request.open('GET', 'http://wavechatapi.ddns.net:6500/app/user', true)
 request.onload = function () {
 // Begin accessing JSON data here
 var data = JSON.parse(this.response)
