@@ -9,5 +9,3 @@ pourra éventuellement être développée pour les téléphones Android. Cela d�
 que le cours R4A11 - Développement d'applications mobiles nous apportera.
 Voici un exemple de ce à quoi pourrait ressembler notre messagerie (dans l’idéal, sans les
 fonctionnalités supplémentaires car ce n’est qu’un exemple d’apparence en ligne)
-
-changement
