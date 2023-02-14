@@ -35,10 +35,25 @@
                                 <p class="groupName">Nom</p>  
                                 <p class="lastMessage">Dernier message</p>  
                                 </div> 
-                                </div>  
+                                </div>
                                 </a>`;
                 }
+
+                
                 document.write(divs);
+
+                const myDivs = document.getElementsByClassName("containerChat");
+                for (let i = 0; i < myDivs.length; i++){
+                    myDivs[i].addEventListener("click", function(){
+                        const html = document.getElementsByTagName("html");
+                        this.style.backgroundColor = "white";
+                        for(let j = 0; myDivs.length; j++){
+                            if(myDivs[j] != myDiv[i]){
+                                myDiv[j].style.backgroundColor = "#4f518c"
+                            }
+                        }
+                    })
+                }
             </script>
 
         </div>
