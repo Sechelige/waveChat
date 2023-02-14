@@ -25,10 +25,10 @@
         </div>
         <div class="containerChats">
 
-            <script>
+            <script> // SCRIPT TO GENERATE TEMPLATE CHATS
                 let divs = '';
                 for (let i of Array(50).keys()) {
-                    divs +=     `<a href="#"> 
+                    divs += `<a href="#"> 
                                 <div class="containerChat">  
                                 <img class="groupChatImage" src="images/groupChat.png" alt="A description of the image">
                                 <div class="groupChatText"> 
@@ -39,24 +39,41 @@
                                 </a>`;
                 }
 
-                
+
                 document.write(divs);
 
                 const myDivs = document.getElementsByClassName("containerChat");
-                for (let i = 0; i < myDivs.length; i++){
-                    myDivs[i].addEventListener("click", function(){
-                        const html = document.getElementsByTagName("html");
-                        this.style.backgroundColor = "white";
-                        for(let j = 0; myDivs.length; j++){
-                            if(myDivs[j] != myDiv[i]){
-                                myDiv[j].style.backgroundColor = "#4f518c"
-                            }
-                        }
+                for (let i = 0; i < myDivs.length; i++) {
+                    myDivs[i].addEventListener("click", function () {
+                        this.style.backgroundColor = "";
                     })
                 }
+                // END OF SCRIPT
             </script>
 
         </div>
+
+
+    </div>
+    <div id="containerDiscussion">
+
+        <script>
+            let messages = '';
+            for (let i of Array(50).keys()) {
+                messages += `<div class="messageBox">
+                        <p>Message de test</p>
+                        </div>`;
+            }
+
+
+            document.write(messages);
+
+
+
+
+
+
+        </script>
     </div>
 
 </body>

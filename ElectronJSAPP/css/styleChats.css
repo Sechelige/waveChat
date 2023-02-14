@@ -8,6 +8,7 @@ body{
      height: 100%;
      width: 300px;
      background-color: #2c2a4a;
+     float:left;
 }
 
 #containerTop {
@@ -146,4 +147,30 @@ input[type="text"] {
 
 input[type="text"]::placeholder {
      color: #fff;
+}
+
+#containerDiscussion{
+     width:calc(100% - 320px);
+     height:100%;
+     float:right;
+     position:absolute;
+     right:10px;
+     top:10px;
+     overflow : auto;
+}
+
+.messageBox {
+     position:relative;
+     background-color: #907AD6;
+     width:fit-content;
+     height:auto;
+     font-size:20px;
+     border-radius: 15px;
+     margin-left : 10px;
+     padding-right:10px;
+}
+
+.messageBox p {
+     color : white;
+     margin-left:10px;
 }
