@@ -160,7 +160,7 @@ input[type="text"]::placeholder {
 }
 
 .messageBox {
-     background-color: #907ad6;
+     background-color: #4f518c;
      font-size: 20px;
      padding-right: 10px;
      margin: 0;
@@ -171,7 +171,7 @@ input[type="text"]::placeholder {
 }
 
 .messageBox:hover {
-     background-color: #4f518c;
+     background-color: #907ad6;
 }
 
 .messageBox .profilePictureMessage {
