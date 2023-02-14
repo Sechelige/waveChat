@@ -13,7 +13,7 @@ module.exports = app => {
     router.get('/:tagUtilisateur', user.findOne);
 
     // Update a User with id
-    //router.put('/:tagUtilisateur', user.updateById);
+    router.put('/:tagUtilisateur', user.updateById);
 
     // Delete a User with id
     router.delete('/:id', function (req, res) {
