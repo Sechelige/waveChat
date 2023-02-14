@@ -10,14 +10,16 @@ exports.create = (req, res) => {
     }
 
     // Create a User
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
+    const nUser = new user({
+        nomUtilisateur: req.body.nomUtilisateur,
+        photoProfil: req.body.photoProfil,
+        mdp: req.body.mdp,
+        dateCreation: req.body.dateCreation,
+        email: req.body.email
     });
 
     // Save User in the database
-    user.create(user, (err, data) => {
+    user.create(nUser, (err, data) => {
         if (err)
             res.status(500).send({
                 message:
@@ -40,21 +42,23 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single User with a userId
+
 exports.findOne = (req, res) => {
-    user.findById(req.params.userId, (err, data) => {
-        if (err) {
-            if (err.kind === 'not_found') {
-                res.status(404).send({
-                    message: `Not found User with id ${req.params.userId}.`
-                });
-            } else {
-                res.status(500).send({
-                    message: 'Error retrieving User with id ' + req.params.userId
-                });
-            }
-        } else res.send(data);
+    user.findById(req.params.tagUtilisateur, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.params.tagUtilisateur}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error retrieving Tutorial with id " + req.params.tagUtilisateur
+          });
+        }
+      } else res.send(data);
     });
-};
+  };
+
 
 exports.update = (req, res) => {
     // Validate Request
@@ -65,23 +69,24 @@ exports.update = (req, res) => {
     }
 
     user.updateById(
-        req.params.userId,
-        new User(req.body),
+        req.params.tagUtilisateur,
+        new user(req.body),
         (err, data) => {
             if (err) {
                 if (err.kind === 'not_found') {
                     res.status(404).send({
-                        message: `Not found User with id ${req.params.userId}.`
+                        message: `Not found User with id ${req.params.tagUtilisateur}.`
                     });
                 } else {
                     res.status(500).send({
-                        message: 'Error updating User with id ' + req.params.userId
+                        message: 'Error updating User with id ' + req.params.tagUtilisateur
                     });
                 }
             } else res.send(data);
         }
     );
 };
+/*
 
 // Delete a User with the specified userId in the request
 exports.delete = (req, res) => {
@@ -98,4 +103,4 @@ exports.delete = (req, res) => {
             }
         } else res.send({ message: `User was deleted successfully!` });
     });
-};
+};*/

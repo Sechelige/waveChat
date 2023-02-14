@@ -4,22 +4,16 @@ module.exports = app => {
     var router = require('express').Router();
 
     // Create a new User
-    router.post('/', function (req, res) {
-        user.create;
-    });
+    router.post('/', user.create);
 
     // Retrieve all Users
     router.get('/', user.findAll);
 
     // Retrieve a single User with id
-    router.get('/:id', function (req, res) {
-        user.findOne;
-    });
+    router.get('/:tagUtilisateur', user.findOne);
 
     // Update a User with id
-    router.put('/:id', function (req, res) {
-        user.updateById;
-    });
+    //router.put('/:tagUtilisateur', user.updateById);
 
     // Delete a User with id
     router.delete('/:id', function (req, res) {
