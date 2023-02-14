@@ -56,7 +56,7 @@
             const usernames = ['Alice', 'Bob', 'Charlie'];
 
             // Define an array of template messages
-            const templateMessages = ['Hello', 'How are you?', 'Nice to see you!', 'What are you up to?', 'How was your day?'];
+            const templateMessages = ['Hello', 'How are you?', 'Nice to see you!', 'What are you up to?', 'How was your day?', `Hi there! How are you? I hope this message finds you well. I just wanted to touch base and see how you're doing. It's been a while since we last spoke, and I thought it would be great to catch up.What have you been up to lately? Anything exciting going on in your life? I've been keeping busy with work, but I'm trying to make some time for hobbies and fun activities too. Let's plan a call or meet up soon to catch up properly. It would be great to hear all about your adventures and share some of mine too. Just let me know what works for you and we can schedule something.`];
 
             // Shuffle the arrays
             shuffleArray(usernames);
@@ -87,7 +87,11 @@
             }
         </script>
     </div>
-
+    <div id="containerMessenger">
+        <div id="messenger"></div>
+        <input type="text" id="inputMessenger" placeholder="Type your message here...">
+        <button id="sendMessenger">Send</button>
+    </div>
 </body>
 
 </html>

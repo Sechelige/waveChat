@@ -85,7 +85,6 @@ body {
      align-items: center;
      margin-left: 5px;
      transition: 0.1s;
-
 }
 
 .containerChat .groupChatImage {
@@ -162,46 +161,47 @@ input[type="text"]::placeholder {
 
 .messageBox {
      background-color: #907ad6;
-     font-size: 20px;    
+     font-size: 20px;
      padding-right: 10px;
-     margin:0;
+     margin: 0;
      display: flex;
-     align-items: center;
-     padding-top:10px;
-     padding-bottom:10px;
-     transition:0.1s;
-
+     padding-top: 10px;
+     padding-bottom: 10px;
+     transition: 0.1s;
 }
 
 .messageBox:hover {
-     background-color:#4f518c;
+     background-color: #4f518c;
 }
 
 .messageBox .profilePictureMessage {
      height: 60px;
      border-radius: 50%;
-     margin-left:10px;
-     float:left;
+     margin-left: 10px;
+     float: left;
 }
 
 .textMessage {
      display: flex;
      flex-direction: column;
      justify-content: center;
-     margin-left:10px;
+     margin-left: 10px;
 }
 
 .textMessage p {
-     margin:0;
+     margin: 0;
 }
 
 .usernameChat {
-     font-size:22px;
+     font-size: 22px;
      font-weight: bold;
-     color:white;
+     color: white;
 }
 
+.usernameChat:hover {
+     text-decoration: underline;
+}
 .messageContent {
-     font-size:20px;
-     color:#CCC;
+     font-size: 20px;
+     color: #ccc;
 }
