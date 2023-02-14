@@ -151,7 +151,7 @@ input[type="text"]::placeholder {
 
 #containerDiscussion {
      width: calc(100% - 300px);
-     height: 100%;
+     height: calc(100% - 60px);
      float: right;
      position: absolute;
      right: 0px;
@@ -204,4 +204,36 @@ input[type="text"]::placeholder {
 .messageContent {
      font-size: 20px;
      color: #ccc;
+}
+
+#containerMessenger {
+     display:flex;
+     align-items: center;
+     position:absolute;
+     left:300px;
+     width:calc(100% - 300px);
+     bottom:0;
+     z-index: 2;
+     height:60px;
+     background-color: #2c2a4a;
+
+}
+
+#containerMessenger input{
+     background-color: #907ad6;
+     padding:10px;
+     margin-left:10px;
+     margin-right:10px;
+     border-radius: 30px;
+     transition: 0.1s;
+     width:calc(100% - 100px);
+}
+
+#containerMessenger input::placeholder{
+     color:#ccc;
+}
+
+#sendMessenger{
+     position:absolute;
+     right:15px;
 }
