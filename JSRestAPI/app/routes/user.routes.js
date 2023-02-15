@@ -13,12 +13,10 @@ module.exports = app => {
     router.get('/:tagUtilisateur', user.findOne);
 
     // Update a User with id
-    router.put('/:tagUtilisateur', user.updateById);
+    router.put('/:tagUtilisateur', user.update);
 
     // Delete a User with id
-    router.delete('/:id', function (req, res) {
-        user.deleteById;
-    });
+    router.delete('/:tagUtilisateur', user.deleteOne);
 
     app.use('/app/user', router);
 };

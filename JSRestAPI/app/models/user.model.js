@@ -53,9 +53,27 @@ User.findById = (tagUtilisateur, result) => {
 }
 
 User.updateById = (tagUtilisateur, user, result) => {
+    sqlstar = "UPDATE Utilisateur SET"
+    sqlend = " WHERE tagUtilisateur = " + tagUtilisateur
+
+    if (user.nomUtilisateur) {
+        sqlstar = sqlstar + " nomUtilisateur = '" + user.nomUtilisateur + "',"
+    }
+    if (user.email) {
+        sqlstar = sqlstar + " email = '" + user.email + "',"
+    }
+    if (user.mdp) {
+        sqlstar = sqlstar + " mdp = '" + user.mdp + "',"
+    }
+    if (user.photoProfil) {
+        sqlstar = sqlstar + " photoProfil = '" + user.photoProfil + "',"
+    }
+    sqlstar = sqlstar.slice(0, -1)
+    sqlstar = sqlstar + sqlend + ";"
+
+    console.log(sqlstar)
     sql.query(
-        "UPDATE Utilisateur SET nomUtilisateur = ?, email = ?, mdp = ?, photoProfil WHERE tagUtilisateur = ?",
-        [user.nomUtilisateur,  user.email, user.mdp, user.photoProfil, tagUtilisateur],
+        sqlstar,
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -69,14 +87,14 @@ User.updateById = (tagUtilisateur, user, result) => {
                 return;
             }
 
-            console.log("updated user: ", { id: id, ...user });
-            result(null, { id: id, ...user });
+            console.log("updated user: ", { tagUtilisateur: tagUtilisateur, ...user });
+            result(null, { tagUtilisateur: tagUtilisateur, ...user });
         }
     );
 }
-/*
-User.remove = (id, result) => {
-    sql.query("DELETE FROM Userapp WHERE idUtilisateur = ?", id, (err, res) => {
+
+User.removeById = (tagUtilisateur, result) => {
+    sql.query("DELETE FROM Utilisateur WHERE tagUtilisateur = ?", tagUtilisateur, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -89,9 +107,9 @@ User.remove = (id, result) => {
             return;
         }
 
-        console.log("deleted user with id: ", id);
+        console.log("deleted user with id: ", tagUtilisateur);
         result(null, res);
     });
-}*/
+}
 
 module.exports = User;

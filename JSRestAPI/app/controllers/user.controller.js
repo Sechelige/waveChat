@@ -86,21 +86,20 @@ exports.update = (req, res) => {
         }
     );
 };
-/*
 
 // Delete a User with the specified userId in the request
-exports.delete = (req, res) => {
-    user.remove(req.params.userId, (err, data) => {
+exports.deleteOne = (req, res) => {
+    user.removeById(req.params.tagUtilisateur, (err, data) => {
         if (err) {
             if (err.kind === 'not_found') {
                 res.status(404).send({
-                    message: `Not found User with id ${req.params.userId}.`
+                    message: `Not found User with id ${req.params.tagUtilisateur}.`
                 });
             } else {
                 res.status(500).send({
-                    message: 'Could not delete User with id ' + req.params.userId
+                    message: 'Could not delete User with id ' + req.params.tagUtilisateur
                 });
             }
         } else res.send({ message: `User was deleted successfully!` });
     });
-};*/
+};
