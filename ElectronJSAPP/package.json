@@ -18,11 +18,5 @@
     "axios": "^1.2.2",
     "oracledb": "^5.5.0",
     "sequelize": "^6.28.0"
-  },
-  "build": {
-    "appId": "wave.app",
-    "win": {
-      "target": "nsis"
-    }
   }
 }
