@@ -36,6 +36,14 @@
     <div id="containerMessenger">
         <div id="messenger"></div>
         <input type="text" id="inputMessenger" placeholder="Type your message here...">
+        <script>
+            document.getElementById("inputMessenger").addEventListener("keyup", function(event){
+                if(event.keyCode === 13){
+                    
+                    document.getElementById("inputMessenger").value = "";
+                }
+            })
+        </script>
         <button id="sendMessenger">Send</button>
     </div>
 </body>
