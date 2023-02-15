@@ -15,6 +15,6 @@ let divs = '';
                 const myDivs = document.getElementsByClassName("containerChat");
                 for (let i = 0; i < myDivs.length; i++) {
                     myDivs[i].addEventListener("click", function () {
-                        this.style.backgroundColor = "red";
+                        this.style.backgroundColor = "#";
                     })
                 }

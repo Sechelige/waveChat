@@ -25,7 +25,7 @@
         </div>
         <div id="containerChats">
             <script src="scripts/templateChats.js"></script> <!-- Displaying template chats -->
-            
+
         </div>
     </div>
     <div id="containerDiscussion">
@@ -37,10 +37,22 @@
         <div id="messenger"></div>
         <input type="text" id="inputMessenger" placeholder="Type your message here...">
         <script>
-            document.getElementById("inputMessenger").addEventListener("keyup", function(event){
-                if(event.keyCode === 13){
-                    
+            let myDiv = document.getElementById("inputMessenger")
+            let message = myDiv.value
+            myDiv.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    let message = myDiv.message
+                    let htmlCode = `<div class="messageBox">
+                                        <img class="profilePictureMessage" src="images/groupChat.png">
+                                        <div class="textMessage">
+                                            <p class="usernameChat">Vous</p>
+                                            <p class="messageContent">${message}</p>
+                                        </div>
+                                    </div>`;
+                    document.getElementById("containerDiscussion").innerHTML += htmlCode;
                     document.getElementById("inputMessenger").value = "";
+                    let objDiv = document.getElementById("containerDiscussion");
+                    objDiv.scrollTop = objDiv.scrollHeight;
                 }
             })
         </script>
