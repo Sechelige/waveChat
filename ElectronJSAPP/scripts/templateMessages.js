@@ -1,7 +1,7 @@
-const usernames = ["Alice", "Bob", "Charlie"];
+const usernames = ["Alice", "Bob", "Charlie"]; // Template names 
 
 // Define an array of template messages
-const templateMessages = [
+const templateMessages = [ // Template messages
      "Hello",
      "How are you?",
      "Nice to see you!",
@@ -11,12 +11,12 @@ const templateMessages = [
 ];
 
 // Shuffle the arrays
-shuffleArray(usernames);
-shuffleArray(templateMessages);
+shuffleArray(usernames); // shuffling usernames
+shuffleArray(templateMessages); // shuffling messages
 
 // Generate 50 random messages
 let messages = "";
-for (let i of Array(50).keys()) {
+for (let i of Array(5).keys()) { // loop to display x messages
      // Randomly choose a username and message
      const username = usernames[Math.floor(Math.random() * usernames.length)];
      const message =
@@ -32,6 +32,7 @@ for (let i of Array(50).keys()) {
 }
 document.write(messages);
 
+// Function to shuffle
 function shuffleArray(array) {
      for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
