@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My Electron App</title>
+    <title>Wave!</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styleChats.css">
 
@@ -21,7 +21,6 @@
             <div id="newMessage">
                 <a href="#"><img class="topbarImages" src="images/new-message.png" alt="A description of the image"></a>
             </div>
-
         </div>
         <div id="containerChats">
             <script src="scripts/templateChats.js"></script> <!-- Displaying template chats -->
@@ -36,25 +35,7 @@
     <div id="containerMessenger">
         <div id="messenger"></div>
         <input type="text" id="inputMessenger" placeholder="Type your message here...">
-        <script>
-            let myDiv = document.getElementById("inputMessenger")
-            let message = myDiv.value
-            myDiv.addEventListener("keyup", function (event) {
-                if (event.keyCode === 13) {
-                    let htmlCode = `<div class="messageBox">
-                                        <img class="profilePictureMessage" src="images/groupChat.png">
-                                        <div class="textMessage">
-                                            <p class="usernameChat">Vous</p>
-                                            <p class="messageContent">${message}</p>
-                                        </div>
-                                    </div>`;
-                    document.getElementById("containerDiscussion").innerHTML += htmlCode;
-                    document.getElementById("inputMessenger").value = "";
-                    let objDiv = document.getElementById("containerDiscussion");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                }
-            })
-        </script>
+        <script src="scripts/sendMessage.js"></script>
         <button id="sendMessenger">Send</button>
     </div>
 </body>
