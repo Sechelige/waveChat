@@ -11,11 +11,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^22.0.0"
+    "electron": "^22.0.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "axios": "^1.2.2",
     "oracledb": "^5.5.0",
     "sequelize": "^6.28.0"
+  },
+  "build": {
+    "appId": "wave.app",
+    "win": {
+      "target": "nsis"
+    }
   }
 }
