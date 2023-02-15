@@ -48,7 +48,7 @@ body {
      align-items: center;
 }
 
-.containerChats {
+#containerChats {
      margin: 0;
      padding: 0;
      display: flex;
@@ -69,7 +69,7 @@ body {
      height: 10%;
 }
 
-.containerChats a {
+#containerChats a {
      height: 100%;
      width: 100%;
 }
@@ -175,7 +175,7 @@ input[type="text"]::placeholder {
 }
 
 .messageBox .profilePictureMessage {
-     height: 60px;
+     height: 50px;
      border-radius: 50%;
      margin-left: 10px;
      float: left;
@@ -193,7 +193,7 @@ input[type="text"]::placeholder {
 }
 
 .usernameChat {
-     font-size: 22px;
+     font-size: 16px;
      font-weight: bold;
      color: white;
 }
@@ -202,7 +202,7 @@ input[type="text"]::placeholder {
      text-decoration: underline;
 }
 .messageContent {
-     font-size: 20px;
+     font-size: 14px;
      color: #ccc;
 }
 
