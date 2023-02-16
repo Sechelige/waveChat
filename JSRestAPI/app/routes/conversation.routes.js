@@ -7,7 +7,7 @@ module.exports = app => {
     router.post('/', conversation.create);
 
     // Retrieve all Conversations
-    router.get('/', conversation.getll);
+    router.get('/', conversation.getll); // JE CROIS QUE YA UNE FAUTE LA
 
     // Retrieve a single Conversation with tagUtilisateur
     router.get('/:tagUtilisateur', conversation.findOne);
