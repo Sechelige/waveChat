@@ -1,6 +1,9 @@
 const user = require('../models/user.model');
 
-// Create and Save a new User
+//Permet de créer un utilisateur dans la base de données
+//route : /app/user (POST)
+//
+//
 exports.create = (req, res) => {
     // Validate request
     if (!req.body) {
@@ -29,7 +32,12 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Users from the database.
+
+
+//Permet de récupérer tous les utilisateurs de la base de données
+//route : /app/user (GET)
+//
+//
 exports.findAll = (req, res) => {
     user.getAll((err, data) => {
         if (err)
@@ -41,8 +49,12 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single User with a userId
 
+
+//Permet de récupérer un utilisateur de la base de données en fonction de son tag
+//route : /app/user/:tagUtilisateur (GET)
+//
+//
 exports.findOne = (req, res) => {
     user.findById(req.params.tagUtilisateur, (err, data) => {
       if (err) {
@@ -60,6 +72,11 @@ exports.findOne = (req, res) => {
   };
 
 
+
+//Permet de mettre à jour un utilisateur de la base de données en fonction de son tag
+//route : /app/user/:tagUtilisateur (PUT)
+//
+//
 exports.update = (req, res) => {
     // Validate Request
     if (!req.body) {
@@ -87,7 +104,12 @@ exports.update = (req, res) => {
     );
 };
 
-// Delete a User with the specified userId in the request
+
+
+// Permet de supprimer un utilisateur de la base de données en fonction de son tag
+//route : /app/user/:tagUtilisateur (DELETE)
+//
+//
 exports.deleteOne = (req, res) => {
     user.removeById(req.params.tagUtilisateur, (err, data) => {
         if (err) {
