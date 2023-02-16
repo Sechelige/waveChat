@@ -3,19 +3,19 @@ module.exports = app => {
   
     var router = require('express').Router();
 
-    // Create a new User
+    // Permet de créer un utilisateur dans la base de données
     router.post('/', user.create);
 
-    // Retrieve all Users
+    // Permet de récupérer tous les utilisateurs de la base de données
     router.get('/', user.findAll);
 
-    // Retrieve a single User with id
+    // Permet de récupérer un utilisateur de la base de données en fonction de son tag
     router.get('/:tagUtilisateur', user.findOne);
 
-    // Update a User with id
+    // Permet de mettre à jour un utilisateur de la base de données en fonction de son tag
     router.put('/:tagUtilisateur', user.update);
 
-    // Delete a User with id
+    // Permet de supprimer un utilisateur de la base de données en fonction de son tag
     router.delete('/:tagUtilisateur', user.deleteOne);
 
     app.use('/app/user', router);

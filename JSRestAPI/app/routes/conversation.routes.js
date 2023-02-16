@@ -3,15 +3,23 @@ module.exports = app => {
 
     var router = require('express').Router();
 
-    // Create a new Conversation
-    router.post('/', conversation.create);
+    // Permet de créer une conversation entre deux utilisateurs dans la base de données
+    router.post('/user/:tagUtilisateur1/:tagUtilisateur2', conversation.createWithUser);
 
-    // Retrieve all Conversations
-    router.get('/', conversation.getll);
+    // Permet de récupérer toutes les conversations de la base de données
+    router.get('/', conversation.get);
 
-    // Retrieve a single Conversation with tagUtilisateur
-    router.get('/:tagUtilisateur', conversation.findOne);
+    // Permet de récupérer toutes les conversations de la base de données selon un tag utilisateur
+    router.get('/conv/user/:tagUtilisateur', conversation.getByUser);
+
+    // Permet de récupérer une conversation de la base de données selon son id
+    router.get('/conv/:idConversation', conversation.getConvById);
+
+    // Permet de mofiier une conversation de la base de données selon son id
+    router.put('/conv/:idConversation', conversation.updateConv);
+
+    // Permet de supprimer une conversation de la base de données selon son id
+    router.delete('/conv/:idConversation', conversation.deleteConv);
 
     app.use('/app/conversation', router);
-
 };
