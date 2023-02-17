@@ -4,6 +4,18 @@ body {
      font-family: "Open Sans", sans-serif;
 }
 
+body,
+html {
+     height: 100%;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+}
+
+html {
+     background-color: #4F518C;
+}
+
 #containerLeftbar {
      height: 100%;
      width: 300px;
