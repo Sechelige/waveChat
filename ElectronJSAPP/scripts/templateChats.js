@@ -13,6 +13,7 @@ fetch("http://wavechatapi.ddns.net:6500/app/user")
                         </div> 
                       </div>
                     </a>`;
+                    console.log(data)
             }
           const myDivs = document.getElementsByClassName("containerChat");
           for (let i = 0; i < myDivs.length; i++) {
