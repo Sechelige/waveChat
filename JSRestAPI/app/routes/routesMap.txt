@@ -21,5 +21,10 @@ Gerer les conversations :
 - PUT /conversation/conv/{idConv} : Permet de modifier une conversation en fonction de son id
 - DELETE /conversation/conv/{idConv} : Permet de supprimer une conversation en fonction de son id
 
+si l'API ne fonctionne pas, il faut verifier que le serveur est bien en marche :
+- se connecter en ssh sur le serveur : ssh pi@wavechatapi.ddns.net (mdp : 1425)
+ensuite dans le terminal :  $ screen -r //pour voir les ecrans qui tourne en arriere plan
+                            $ screen -r "nom de l'ecran" //pour se connecter a un ecran en particulier
+                            $ lancer la commande : $ node ~/wavechat/JSRestAPI/server.js //pour lancer le serveur si il est en erreur
 
-
+                            //fermer le terminal et normalement le serveur est en marche
