@@ -1,0 +1,25 @@
+Voici l'ensemble des routes disponble pour utiliser l'API : https://wavechatapi.ddns.net:6500/app
+Pour utiliser l'API, il faut utiliser le protocole HTTPS et le port 6500.
+
+Gerer les utilisateurs :
+- POST /user : Permet de creer un utilisateur 
+- GET /user : Permet de recuperer la liste de tous les utilisateurs 
+- GET /user/{id} : Permet de recuperer un utilisateur en fonction de son id
+- PUT /user/{id} : Permet de modifier un utilisateur en fonction de son id
+- DELETE /user/{id} : Permet de supprimer un utilisateur en fonction de son id
+
+Gerer les messages :
+- POST /message/conv/{idConv}/user/{idUser} : Permet d'envoyer un message dans une conversation en fonction de l'id de la conversation et de l'id de l'utilisateur
+- GET /message/conv/{idConv} : Permet de recuperer la liste de tous les messages d'une conversation en fonction de l'id de la conversation
+- DELETE /message/msg/{id} : Permet de supprimer un message en fonction de son id
+
+Gerer les conversations :
+- POST /conversation/user/{idUser1}/{idUser2} : Permet de creer une conversation entre deux utilisateurs en fonction de leurs id
+- GET /conversation : Permet de recuperer la liste de toutes les conversations presentes dans la base de donnees
+- GET /conversation/conv/user/{idUser} : Permet de recuperer la liste de toutes les conversations d'un utilisateur en fonction de son id
+- GET /conversation/conv/{idConv} : Permet de recuperer une conversation en fonction de son id
+- PUT /conversation/conv/{idConv} : Permet de modifier une conversation en fonction de son id
+- DELETE /conversation/conv/{idConv} : Permet de supprimer une conversation en fonction de son id
+
+
+

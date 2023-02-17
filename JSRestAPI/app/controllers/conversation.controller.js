@@ -48,7 +48,7 @@ exports.get = (req, res) => {
 
 
 //Permet de récupérer toutes les conversations d'un utilisateur de la base de données
-//route : /app/conversation/user/:tagUtilisateur (GET)
+//route : /app/conversation/conv/user/:tagUtilisateur (GET)
 //
 exports.getByUser = (req, res) => {
     conversation.getByUser(req.params.tagUtilisateur, (err, data) => {
@@ -64,7 +64,7 @@ exports.getByUser = (req, res) => {
 
 
 //Permet de récupérer une conversation de la base de données en fonction de son id
-//route : /app/conversation/:idConversation (GET)
+//route : /app/conversation/conv/:idConversation (GET)
 //
 exports.getConvById = (req, res) => {
     conversation.getById(req.params.idConversation, (err, data) => {
@@ -79,7 +79,7 @@ exports.getConvById = (req, res) => {
 
 
 //Permet de mofiier une conversation de la base de données en fonction de son id
-//route : /app/conversation/:idConversation (PUT)
+//route : /app/conversation/conv/:idConversation (PUT)
 //
 exports.updateConv = (req, res) => {
     // Validate Request
@@ -110,7 +110,7 @@ exports.updateConv = (req, res) => {
 
 
 //Permet de supprimer une conversation de la base de données en fonction de son id
-//route : /app/conversation/:idConversation (DELETE)
+//route : /app/conversation/conv/:idConversation (DELETE)
 //
 exports.deleteConv = (req, res) => {
     conversation.remove(req.params.idConversation, (err, data) => {
