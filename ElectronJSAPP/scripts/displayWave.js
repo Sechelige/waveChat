@@ -42,7 +42,7 @@ containerLeftbar.appendChild(containerChats);
 const containerDiscussion = document.createElement('div');
 containerDiscussion.setAttribute('id', 'containerDiscussion');
 const scriptMessages = document.createElement('script');
-scriptMessages.setAttribute('src', 'scripts/templateMessages.js');
+scriptMessages.setAttribute('src', 'scripts/refreshMessages.js');
 containerDiscussion.appendChild(scriptMessages);
 const scriptContainerMessages = document.createElement('script');
 scriptContainerMessages.setAttribute('src', 'scripts/containerMessagesScrolledDown.js');
