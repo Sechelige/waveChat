@@ -1,13 +1,8 @@
-const usernames = ["Alice", "Bob", "Charlie"]; // Template names 
+const usernames = ["Chrolo", "Baptiste", "Nino"]; // Template names 
 
 // Define an array of template messages
 const templateMessages = [ // Template messages
-     "Hello",
-     "How are you?",
-     "Nice to see you!",
-     "What are you up to?",
-     "How was your day?",
-     `Hi there! How are you? I hope this message finds you well. I just wanted to touch base and see how you're doing. It's been a while since we last spoke, and I thought it would be great to catch up.What have you been up to lately? Anything exciting going on in your life? I've been keeping busy with work, but I'm trying to make some time for hobbies and fun activities too. Let's plan a call or meet up soon to catch up properly. It would be great to hear all about your adventures and share some of mine too. Just let me know what works for you and we can schedule something.`,
+     "kys ?", "kys !", "kys."
 ];
 
 // Shuffle the arrays
