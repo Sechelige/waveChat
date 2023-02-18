@@ -1,7 +1,6 @@
 // Create the HTML elements and apply the event listeners
 let userId = 1;
 
-
 fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
   .then((response) => response.json())
   .then((data) => {
