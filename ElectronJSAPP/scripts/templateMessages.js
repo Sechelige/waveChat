@@ -87,7 +87,7 @@ for (let i of Array(600).keys()) { // loop to display x messages
                         </div>
                     </div>`;
 }
-document.write(messages);
+containerDiscussion.innerHTML = messages
 
 // Function to shuffle
 function shuffleArray(array) {

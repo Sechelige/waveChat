@@ -4,7 +4,6 @@ let userId = 1;
 fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
   .then((response) => response.json())
   .then((data) => {
-    containerChats = document.getElementById("containerChats");
     for (let i = 0; i < data.length; i++) {
       containerChats.innerHTML += `<a href="#"> 
                       <div class="containerChat">  
@@ -15,7 +14,6 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
                         </div> 
                       </div>
                     </a>`;
-      console.log(data)
     }
     const myDivs = document.getElementsByClassName("containerChat");
     for (let i = 0; i < myDivs.length; i++) {
