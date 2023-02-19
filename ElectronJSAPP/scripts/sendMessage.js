@@ -31,5 +31,7 @@ inputElement.addEventListener("keyup", function (event) {
 
             document.getElementById("inputMessenger").value = "";
         }
+        const scrollToBottom = require('./containerMessagesScrolledDown');
+        scrollToBottom();
     }
 });
