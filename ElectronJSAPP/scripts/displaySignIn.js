@@ -19,7 +19,7 @@ waveLogoText.innerText = "Wave";
 
 const slogan = document.createElement("p");
 slogan.setAttribute("id", "slogan");
-slogan.innerText = "La messagerie qui prend une vague d'avance";
+slogan.innerText = "La messagerie qui a une vague d'avance";
 
 const textConnexion = document.createElement("p");
 textConnexion.setAttribute("id", "textConnexion");

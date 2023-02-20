@@ -25,9 +25,8 @@ inputElement.addEventListener("keyup", function (event) {
                                                 <p class="messageContent">${inputText}</p>
                                                 </div>
                                                 </div>`
-
-
                ///
+               
                fetch(
                     `http://wavechatapi.ddns.net:6500/app/message/conv/${idConv}/user/${idUser}`,
                     {
