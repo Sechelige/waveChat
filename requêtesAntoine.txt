@@ -1,2 +1,3 @@
 - Route avec conversation et son dernier message
 - rajouter url de groupe
+- rajouter methode get pour obtenir utilisateur avec un email
