@@ -1,3 +1,4 @@
+document.body.innerHTML = "";
 const containerLeftbar = document.createElement('div');
 containerLeftbar.setAttribute('id', 'containerLeftbar');
 const containerTop = document.createElement('div');

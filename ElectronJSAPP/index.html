@@ -8,26 +8,15 @@
 </head>
 
 <body>
-    <div id="backgroundSignIn">
-        <div id="signInBox">
-            <div id="containerWave">
-                <img id="logoWave" src="icon.png" style="display: inline-block;">
-                <h1 id="waveLogoText" style="display: inline-block;">Wave</h1>
-            </div>
-            <p id="slogan">La messagerie qui prend une vague d'avance</p>
-            <p id="textConnexion">Connexion</p>
-            <label class="signText" id="signEmail" for="email">Adresse Email</label>
-            <br>
-            <input class="inputSign"type="email" id="email" name="email" required>
-            <br>
-            <br>
-            <label class="signText" id="signPassword" for="password">Mot de passe</label>
-            <br>
-            <input class="inputSign" type="password" id="password" name="password" required>
-            <br>
-            <input id="signButton" type="submit" value="Se connecter">
-        </div>
-    </div>
+    <script src="scripts/displaySignIn.js"></script>
+    <script>
+        const button = document.getElementById("signButton");
+        button.addEventListener("Click", function (event) {
+            const script = document.createElement("script");
+            script.src = "scripts/displayWave.js";
+            document.head   .appendChild(script);
+        })
+    </script>
     <!-- <script src="scripts/displayWave.js"></script> -->
 </body>
 
