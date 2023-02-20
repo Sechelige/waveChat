@@ -62,7 +62,7 @@ const containerDiscussion = document.createElement('div');
 containerDiscussion.setAttribute('id', 'containerDiscussion');
 
 const scriptMessages = document.createElement('script');
-scriptMessages.setAttribute('src', 'scripts/refreshMessages.js');
+scriptMessages.setAttribute('src', 'scripts/loadMessages.js');
 containerDiscussion.appendChild(scriptMessages);
 
 const scriptContainerMessages = document.createElement('script');
