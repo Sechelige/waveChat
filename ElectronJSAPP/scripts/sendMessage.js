@@ -1,13 +1,12 @@
-var inputElement = document.getElementById("inputMessenger");
-var idConv = 1;
-var idUser = 1;
-var myDiv = document.getElementById("containerDiscussion");
+var inputElement = document.getElementById("inputMessenger"); // Définition de l'élément d'input
+var idConv = 1; // id de la conversation
+var idUser = 1; // id du user
 
 inputElement.addEventListener("keyup", function (event) {
-     if (event.key === "Enter") {
+     if (event.key === "Enter") { // quand entrée dans la barre d'input
           let inputText = inputElement.value;
 
-          if (inputText.length > 0) {
+          if (inputText.length > 0) { // si non vide
                let currentDate = new Date().toISOString().substr(0, 10);
                let currentTime = new Date().toLocaleTimeString("en-US", {
                     hour12: false,
@@ -18,7 +17,17 @@ inputElement.addEventListener("keyup", function (event) {
                     dateMessage: currentDate,
                     heureMessage: currentTime,
                };
+               // Affichage local pour réduire latence visuelle
+               containerDiscussion.innerHTML += `<div class="messageBox">
+                                                <img class="profilePictureMessage" src="images/groupChat.png">
+                                                <div class="textMessage">
+                                                <p class="usernameChat">Vous</p>
+                                                <p class="messageContent">${inputText}</p>
+                                                </div>
+                                                </div>`
 
+
+               ///
                fetch(
                     `http://wavechatapi.ddns.net:6500/app/message/conv/${idConv}/user/${idUser}`,
                     {
