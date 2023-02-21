@@ -5,10 +5,10 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
   .then((data) => {
     for (let i = 0; i < data.length; i++) {
       containerChats.innerHTML += `
-        <div class="containerChat">  
+        <div data-convId="${i}"class="containerChat">  
           <img class="groupChatImage" src="images/groupChat.png" alt="A description of the image">
           <div class="groupChatText"> 
-            <p class="groupName">${data[i].nomConversation}</p>  
+            <p class="groupName">${i} ${data[i].nomConversation}</p>  
             <p class="lastMessage">Dernier message</p>  
           </div> 
         </div>`;
