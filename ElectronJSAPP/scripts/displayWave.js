@@ -61,6 +61,11 @@ containerLeftbar.appendChild(containerChats);
 const containerDiscussion = document.createElement('div');
 containerDiscussion.setAttribute('id', 'containerDiscussion');
 
+const textNoChat = document.createElement('p');
+textNoChat.setAttribute('id', 'textNochat');
+textNoChat.innerText = "Cliquez sur une conversation pour commencer à discuter";
+containerDiscussion.appendChild(textNoChat);
+
 const scriptMessages = document.createElement('script');
 scriptMessages.setAttribute('src', 'scripts/loadMessages.js');
 containerDiscussion.appendChild(scriptMessages);

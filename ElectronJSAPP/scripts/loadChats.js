@@ -1,27 +1,82 @@
 let userId = 1;
 
 fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
-  .then((response) => response.json())
-  .then((data) => {
-    for (let i = 0; i < data.length; i++) {
-      containerChats.innerHTML += `
-        <div data-convId="${i}"class="containerChat">  
-          <img class="groupChatImage" src="images/groupChat.png" alt="A description of the image">
-          <div class="groupChatText"> 
-            <p class="groupName">${i} ${data[i].nomConversation}</p>  
-            <p class="lastMessage">Dernier message</p>  
-          </div> 
-        </div>`;
-    }
-    const myDivs = document.getElementsByClassName("containerChat");
-    for (let i = 0; i < myDivs.length; i++) {
-      myDivs[i].addEventListener("click", function () {
-        // Remove background color from all divs
-        for (let j = 0; j < myDivs.length; j++) {
-          myDivs[j].classList.remove("selected");
-        }
-        // Add selected class to clicked div
-        this.classList.add("selected");
-      });
-    }
-  });
+     .then((response) => response.json())
+     .then((data) => {
+          if (data.length > 0) {
+               data.forEach((chat) => {
+                    const containerChat = document.createElement("div");
+                    containerChat.setAttribute(
+                         "data-convId",
+                         chat.idConversation
+                    );
+                    containerChat.classList.add("containerChat");
+
+                    const groupChatImage = document.createElement("img");
+                    groupChatImage.classList.add("groupChatImage");
+                    groupChatImage.src = "images/groupChat.png";
+                    groupChatImage.alt = "A description of the image";
+
+                    const groupChatText = document.createElement("div");
+                    groupChatText.classList.add("groupChatText");
+
+                    const groupName = document.createElement("p");
+                    groupName.classList.add("groupName");
+                    groupName.textContent = chat.nomConversation;
+
+                    const lastMessage = document.createElement("p");
+                    lastMessage.classList.add("lastMessage");
+                    lastMessage.textContent = "Dernier message";
+
+                    groupChatText.appendChild(groupName);
+                    groupChatText.appendChild(lastMessage);
+
+                    containerChat.appendChild(groupChatImage);
+                    containerChat.appendChild(groupChatText);
+
+                    containerChats.appendChild(containerChat);
+               });
+
+               const myDivs = document.getElementsByClassName("containerChat");
+               for (let i = 0; i < myDivs.length; i++) {
+                    myDivs[i].addEventListener("click", function () {
+                         // Remove background color from all divs
+                         for (let j = 0; j < myDivs.length; j++) {
+                              myDivs[j].classList.remove("selected");
+                         }
+                         // Add selected class to clicked div
+                         this.classList.add("selected");
+                         let convId = this.getAttribute("data-convId");
+                         console.log("Clic sur conversation N°" + convId);
+                         loadMessagesClick(convId);
+                    });
+               }
+          } else {
+               
+          }
+     });
+
+function loadMessagesClick(convId) {
+     fetch(`http://wavechatapi.ddns.net:6500/app/message/conv/${convId}`)
+          .then((response) => response.json())
+          .then((data) => {
+               let messages = "";
+               for (let i = 0; i < data.length; i++) {
+                    messages += `<div class="messageBox">
+        <img class="profilePictureMessage" src="images/groupChat.png">
+        <div class="textMessage">
+          <p class="usernameChat">${data[i].nomUtilisateur}</p>
+          <p class="messageContent">${data[i].contenuMessage}</p>
+        </div>
+      </div>`;
+               }
+               containerDiscussion.innerHTML = messages;
+
+               let objDiv = document.getElementById("containerDiscussion");
+               objDiv.scrollTop = objDiv.scrollHeight;
+
+               // Execute code after fetch is finished
+               console.log("Fetch finished.");
+          })
+          .catch((error) => console.error(error));
+}

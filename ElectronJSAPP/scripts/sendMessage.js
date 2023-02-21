@@ -59,7 +59,7 @@ inputElement.addEventListener("keyup", function (event) {
 
                                    let objDiv = document.getElementById(
                                         "containerDiscussion"
-                                   );
+                                   );   
                                    objDiv.scrollTop = objDiv.scrollHeight;
 
                                    // Execute code after fetch is finished
@@ -67,10 +67,7 @@ inputElement.addEventListener("keyup", function (event) {
                               })
                               .catch((error) => console.error(error));
                     });
-
                document.getElementById("inputMessenger").value = "";
           }
-          const scrollToBottom = require("./containerMessagesScrolledDown");
-          scrollToBottom();
      }
 });
