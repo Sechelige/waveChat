@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@font-face {
+     font-family: "Sonic Empire";
+     src: url("../fonts/SonicEmpire-RLG6.woff") format("woff");
+}
+
+@font-face {
+     font-family: "Nunito";
+     src: url("../fonts/Nunito-Regular.woff") format("woff");
+}
 
 body {
-     font-family: "Open Sans", sans-serif;
+     font-family: "Nunito";
 }
 
 body,
@@ -13,7 +22,7 @@ html {
 }
 
 html {
-     background-color: #4F518C;
+     background-color: #4f518c;
 }
 
 #containerLeftbar {
@@ -96,7 +105,7 @@ html {
      transition: 0.1s;
 }
 
-.containerChat:hover{
+.containerChat:hover {
      cursor: pointer;
 }
 
@@ -216,39 +225,120 @@ input[type="text"]::placeholder {
 }
 
 #containerMessenger {
-     display:flex;
+     display: flex;
      align-items: center;
-     position:absolute;
-     left:300px;
-     width:calc(100% - 300px);
-     bottom:0;
+     position: absolute;
+     left: 300px;
+     width: calc(100% - 300px);
+     bottom: 0;
      z-index: 2;
-     height:60px;
+     height: 60px;
      background-color: #2c2a4a;
-
 }
 
-#containerMessenger input{
+#containerMessenger input {
      background-color: #907ad6;
-     padding:10px;
-     margin-left:10px;
-     margin-right:10px;
+     padding: 10px;
+     margin-left: 10px;
+     margin-right: 10px;
      border-radius: 30px;
      transition: 0.1s;
-     width:calc(100% - 100px);
+     width: calc(100% - 100px);
 }
 
-#containerMessenger input::placeholder{
-     color:#ccc;
+#containerMessenger input::placeholder {
+     color: #ccc;
 }
 
-#sendMessenger{
-     position:absolute;
-     right:15px;
+#sendMessenger {
+     position: absolute;
+     right: 15px;
 }
 
 .selected {
      background-color: #4f518c;
-     width: 85%;
-     margin-left:15%;
-   }
+     width: 95%;
+     margin-left: 5%;
+}
+
+#signInBox {
+     text-align: center;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 60;
+     height: 60%;
+     border-radius: 50px;
+     transform: translate(-50%, -50%);
+     padding:5%;
+}
+
+#signInBox * {
+     margin: 0;
+     padding: 0;
+}
+#backgroundSignIn {
+     width: 100%;
+     height: 100%;
+     background-image: url("../images/signInBackground.svg");
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+
+#waveLogoText {
+     font-size: 10vh;
+     color: white;
+     font-family: "Sonic Empire";
+     letter-spacing: 0.1em;
+     margin: 0;
+     margin-left:5px;
+     margin-right: 5px;
+}
+
+#slogan {
+     font-size: 2vh;
+     color: white;
+}
+
+#textConnexion {
+     font-size: 4vh;
+     color :white;
+     padding-top:2vh;
+     padding-bottom:2vh;
+}
+
+#logoWave {
+     height: 10vh;
+     width: auto;
+     margin-left:5px;
+     margin-right: 5px;
+}
+
+.inputSign {
+     border-radius: 12px;
+     height: 3vh;
+     width : 20vw;
+     color:black;
+     font-size:2vh;
+}
+
+.inputSign:focus {
+     border: #907ad6 5px solid ;
+     outline: none;
+}
+
+.signText {
+     font-size:2vh;
+     color:white;
+}
+
+#signButton {
+     margin: 5vh;
+     width:13vw;
+     height:5vh;
+     background-color: #907ad6;
+     border-radius: 20px;
+     font-size: 2vh;
+     color:white;
+     min-width: 200px;
+}
