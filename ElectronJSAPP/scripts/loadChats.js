@@ -10,6 +10,7 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
                          "data-convId",
                          chat.idConversation
                     );
+                    // containerChat.setAttribute("data-isSelected", "false");
                     containerChat.classList.add("containerChat");
 
                     const groupChatImage = document.createElement("img");
@@ -52,7 +53,6 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
                     });
                }
           } else {
-               
           }
      });
 

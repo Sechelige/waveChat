@@ -343,6 +343,9 @@ input[type="text"]::placeholder {
      min-width: 200px;
 }
 
-#textNoChat {
-     
+#textNoChatSelected {
+     text-align: center;
+     margin-top:46vh;
+     font-size: 4vh;
+     color:white;
 }

@@ -61,10 +61,10 @@ containerLeftbar.appendChild(containerChats);
 const containerDiscussion = document.createElement('div');
 containerDiscussion.setAttribute('id', 'containerDiscussion');
 
-const textNoChat = document.createElement('p');
-textNoChat.setAttribute('id', 'textNochat');
-textNoChat.innerText = "Cliquez sur une conversation pour commencer à discuter";
-containerDiscussion.appendChild(textNoChat);
+const textNoChatSelected = document.createElement('p');
+textNoChatSelected.setAttribute('id', 'textNoChatSelected');
+textNoChatSelected.innerText = "Cliquez sur une conversation pour commencer à discuter";
+containerDiscussion.appendChild(textNoChatSelected);
 
 const scriptMessages = document.createElement('script');
 scriptMessages.setAttribute('src', 'scripts/loadMessages.js');
