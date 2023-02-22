@@ -16,6 +16,9 @@ const accountImage = document.createElement('img');
 accountImage.setAttribute('class', 'topbarImages');
 accountImage.setAttribute('src', 'images/groupChat.png');
 accountImage.setAttribute('alt', 'A description of the image');
+accountImage.addEventListener('click', function(){
+    
+})
 accountLink.appendChild(accountImage);
 account.appendChild(accountLink);
 containerTop.appendChild(account);
