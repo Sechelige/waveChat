@@ -60,6 +60,7 @@ containerLeftbar.appendChild(containerChats);
 
 const containerDiscussion = document.createElement('div');
 containerDiscussion.setAttribute('id', 'containerDiscussion');
+containerDiscussion.setAttribute('data-convId', 'null');
 
 const textNoChatSelected = document.createElement('p');
 textNoChatSelected.setAttribute('id', 'textNoChatSelected');

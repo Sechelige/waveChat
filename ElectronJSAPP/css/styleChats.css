@@ -349,3 +349,10 @@ input[type="text"]::placeholder {
      font-size: 4vh;
      color:white;
 }
+
+.loadingGif {
+     display: block;
+     margin:auto;
+     margin-top:43vh;
+     height:128px;
+}

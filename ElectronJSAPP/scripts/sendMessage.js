@@ -1,11 +1,10 @@
-var inputElement = document.getElementById("inputMessenger"); // Définition de l'élément d'input
-var idConv = 1; // id de la conversation
+var inputElement = document.getElementById("inputMessenger");
 var idUser = 1; // id du user
 
 inputElement.addEventListener("keyup", function (event) {
      if (event.key === "Enter") { // quand entrée dans la barre d'input
           let inputText = inputElement.value;
-
+          let idConv = containerDiscussion.getAttribute("data-convId");
           if (inputText.length > 0) { // si non vide
                let currentDate = new Date().toISOString().substr(0, 10);
                let currentTime = new Date().toLocaleTimeString("en-US", {
@@ -39,9 +38,8 @@ inputElement.addEventListener("keyup", function (event) {
                )
                     .then((response) => response.json())
                     .then((data) => {
-                         const convId = 1;
                          fetch(
-                              `http://wavechatapi.ddns.net:6500/app/message/conv/${convId}`
+                              `http://wavechatapi.ddns.net:6500/app/message/conv/${idConv}`
                          )
                               .then((response) => response.json())
                               .then((data) => {

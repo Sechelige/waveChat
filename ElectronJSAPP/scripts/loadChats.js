@@ -49,6 +49,12 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
                          this.classList.add("selected");
                          let convId = this.getAttribute("data-convId");
                          console.log("Clic sur conversation N°" + convId);
+                         containerDiscussion.innerHTML = "";
+                         const loadGif = document.createElement('img');
+                         loadGif.setAttribute('class', 'loadingGif');
+                         loadGif.setAttribute('src', 'images/loading.gif');
+                         containerDiscussion.setAttribute('data-convId', convId);
+                         containerDiscussion.appendChild(loadGif);
                          loadMessagesClick(convId);
                     });
                }
