@@ -86,6 +86,7 @@ signInBox.appendChild(document.createElement("br"));
 signInBox.appendChild(password);
 signInBox.appendChild(document.createElement("br"));
 signInBox.appendChild(signButton);
+signInBox.appendChild(noAccount);
 backgroundSignIn.appendChild(signInBox);
 
 document.body.appendChild(backgroundSignIn);

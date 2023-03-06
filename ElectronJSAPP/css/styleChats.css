@@ -334,6 +334,7 @@ input[type="text"]::placeholder {
 
 #signButton {
      margin: 5vh;
+     margin-bottom: 2vh;
      width:13vw;
      height:5vh;
      background-color: #907ad6;
@@ -355,4 +356,9 @@ input[type="text"]::placeholder {
      margin:auto;
      margin-top:43vh;
      height:128px;
+}
+
+#noAccount {
+     font-size: 1.5vh;
+     color:white;
 }
