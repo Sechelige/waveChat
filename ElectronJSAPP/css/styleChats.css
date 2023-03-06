@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
 @font-face {
      font-family: "Sonic Empire";
      src: url("../fonts/SonicEmpire-RLG6.woff") format("woff");
@@ -22,7 +23,8 @@ html {
 }
 
 html {
-     background-color: #4f518c;
+     background: rgb(44,42,74);
+background: linear-gradient(270deg, rgba(44,42,74,1) 0%, rgba(79,81,140,1) 50%, rgba(44,42,74,1) 100%);
 }
 
 #containerLeftbar {
@@ -84,6 +86,7 @@ html {
 ::-webkit-scrollbar {
      width: 8px;
 }
+
 ::-webkit-scrollbar-thumb {
      background: #888;
      border-radius: 10px;
@@ -172,6 +175,7 @@ input[type="text"]::placeholder {
      height: calc(100% - 60px);
      float: right;
      position: absolute;
+
      right: 0px;
      top: 0;
      overflow: auto;
@@ -219,6 +223,7 @@ input[type="text"]::placeholder {
 .usernameChat:hover {
      text-decoration: underline;
 }
+
 .messageContent {
      font-size: 14px;
      color: #ccc;
@@ -270,13 +275,14 @@ input[type="text"]::placeholder {
      height: 60%;
      border-radius: 50px;
      transform: translate(-50%, -50%);
-     padding:5%;
+     padding: 5%;
 }
 
 #signInBox * {
      margin: 0;
      padding: 0;
 }
+
 #backgroundSignIn {
      width: 100%;
      height: 100%;
@@ -291,7 +297,7 @@ input[type="text"]::placeholder {
      font-family: "Sonic Empire";
      letter-spacing: 0.1em;
      margin: 0;
-     margin-left:5px;
+     margin-left: 5px;
      margin-right: 5px;
 }
 
@@ -302,63 +308,70 @@ input[type="text"]::placeholder {
 
 #textConnexion {
      font-size: 4vh;
-     color :white;
-     padding-top:2vh;
-     padding-bottom:2vh;
+     color: white;
+     padding-top: 2vh;
+     padding-bottom: 2vh;
 }
 
 #logoWave {
      height: 10vh;
      width: auto;
-     margin-left:5px;
+     margin-left: 5px;
      margin-right: 5px;
 }
 
 .inputSign {
      border-radius: 12px;
      height: 3vh;
-     width : 20vw;
-     color:black;
-     font-size:2vh;
+     width: 20vw;
+     color: black;
+     font-size: 2vh;
+     transition: 0.4s;
 }
 
 .inputSign:focus {
-     border: #907ad6 5px solid ;
+     border: #907ad6 5px solid;
      outline: none;
+     width: 25vw;
+     height: 4vh;
+     font-size: 2.5vh;
 }
 
 .signText {
-     font-size:2vh;
-     color:white;
+     font-size: 2vh;
+     color: white;
 }
 
 #signButton {
      margin: 5vh;
      margin-bottom: 2vh;
-     width:13vw;
-     height:5vh;
+     width: 13vw;
+     height: 5vh;
      background-color: #907ad6;
      border-radius: 20px;
      font-size: 2vh;
-     color:white;
+     color: white;
      min-width: 200px;
+     cursor: pointer;
 }
 
 #textNoChatSelected {
      text-align: center;
-     margin-top:46vh;
+     margin-top: 46vh;
      font-size: 4vh;
-     color:white;
+     color: white;
 }
 
 .loadingGif {
      display: block;
-     margin:auto;
-     margin-top:43vh;
-     height:128px;
+     margin: auto;
+     margin-top: 43vh;
+     height: 128px;
 }
 
 #noAccount {
      font-size: 1.5vh;
-     color:white;
+     color: white;
+     text-decoration: underline;
+     cursor: pointer;
 }

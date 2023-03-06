@@ -24,7 +24,7 @@ slogan.innerText = "La messagerie qui a une vague d'avance";
 
 textConnexion = document.createElement("p");
 textConnexion.setAttribute("id", "textConnexion");
-textConnexion.innerText = "Connexion";
+textConnexion.innerText = "Inscription";
 
 signEmail = document.createElement("label");
 signEmail.setAttribute("class", "signText");
@@ -55,10 +55,10 @@ password.setAttribute("required", "");
 /// AJOUTER LES APPENDCHILD
 noAccount = document.createElement("p");
 noAccount.setAttribute("id", "noAccount");
-noAccount.innerText = "S'inscrire";
+noAccount.innerText = "Se connecter";
 noAccount.addEventListener("click", function(){
     let script = document.createElement("script");
-    script.src = "scripts/displaySignUp.js";
+    script.src = "scripts/displaySignIn.js";
     document.head.appendChild(script);
 });
 ///

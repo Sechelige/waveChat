@@ -24,8 +24,12 @@ inputElement.addEventListener("keyup", function (event) {
                                                 <p class="messageContent">${inputText}</p>
                                                 </div>
                                                 </div>`
+               let objDiv = document.getElementById(
+                    "containerDiscussion"
+               );
+               objDiv.scrollTop = objDiv.scrollHeight;
                ///
-               
+
                fetch(
                     `http://wavechatapi.ddns.net:6500/app/message/conv/${idConv}/user/${idUser}`,
                     {
@@ -57,7 +61,7 @@ inputElement.addEventListener("keyup", function (event) {
 
                                    let objDiv = document.getElementById(
                                         "containerDiscussion"
-                                   );   
+                                   );
                                    objDiv.scrollTop = objDiv.scrollHeight;
 
                                    // Execute code after fetch is finished
