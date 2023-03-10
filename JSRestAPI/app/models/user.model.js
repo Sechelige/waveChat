@@ -6,7 +6,6 @@ const User = function(user) {
     this.nomUtilisateur = user.nomUtilisateur;
     this.photoProfil = user.photoProfil;
     this.numCheck = user.numCheck;
-    this.mdp = user.mdp;
     this.dateCreation = user.dateCreation;
     this.email = user.email;
 }

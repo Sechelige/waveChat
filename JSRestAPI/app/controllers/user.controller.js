@@ -22,7 +22,6 @@ exports.create = (req, res) => {
     const nUser = new user({
         nomUtilisateur: req.body.nomUtilisateur,
         photoProfil: req.body.photoProfil,
-        mdp: req.body.mdp,
         dateCreation: dateCreation,
         email: req.body.email
     });
