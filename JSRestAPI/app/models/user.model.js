@@ -5,6 +5,7 @@ const User = function(user) {
     this.tagUtilisateur = user.tagUtilisateur;
     this.nomUtilisateur = user.nomUtilisateur;
     this.photoProfil = user.photoProfil;
+    this.numCheck = user.numCheck;
     this.mdp = user.mdp;
     this.dateCreation = user.dateCreation;
     this.email = user.email;
@@ -111,5 +112,38 @@ User.removeById = (tagUtilisateur, result) => {
         result(null, res);
     });
 }
+
+User.getEmailByUser = (tagUtilisateur, result) => {
+    sql.query(`SELECT email FROM Utilisateur WHERE tagUtilisateur = ${tagUtilisateur}`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        } else {
+            if (res.length) {
+                console.log("found user: ", res[0]);
+                result(null, res[0].email);
+            } else {
+                result(null, null);
+            }
+        }
+    });
+}
+
+User.checkEmail = (email, result) => {
+    sql.query("SELECT email FROM Utilisateur WHERE email = ?", email, (err, res) => {
+        if (err) {
+            console.log("Erreur lors de la vérification de l'email : ", err);
+            result(err, null);
+            } else {
+                if (res.length) {
+                    console.log("Email déjà utilisé : ", res[0]);
+                    result(null, res[0].email);
+                } else {
+                    result({ kind: "not_found" }, null);
+                }
+            }
+    });
+}
+
 
 module.exports = User;

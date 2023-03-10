@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/conversation.routes.js')(app);
 require('./app/routes/message.routes.js')(app);
+require('./app/routes/connexion.routes.js')(app);
 
 const PORT = process.env.PORT || 6500;
 app.listen(PORT, () => {
