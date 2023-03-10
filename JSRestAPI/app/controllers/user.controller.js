@@ -1,4 +1,5 @@
 const user = require('../models/user.model');
+const nodemailer = require('../models/nodemailer');
 
 //Permet de créer un utilisateur dans la base de données
 //route : /app/user (POST)
@@ -12,13 +13,34 @@ exports.create = (req, res) => {
         });
     }
 
+    //generate date like this : 2020-01-01
+    let date = new Date();
+    let dateCreation = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    console.log(dateCreation);
+
     // Create a User
     const nUser = new user({
         nomUtilisateur: req.body.nomUtilisateur,
         photoProfil: req.body.photoProfil,
-        mdp: req.body.mdp,
-        dateCreation: req.body.dateCreation,
+        dateCreation: dateCreation,
         email: req.body.email
+    });
+
+    //verification de l'unicité de l'email
+    user.checkEmail(req.body.email, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                console.log("Email non trouvé");
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving Tutorial with id " + req.params.tagUtilisateur
+                });
+            }
+        } else {
+            res.status(500).send({
+                message: "Email déjà utilisé"
+            });
+        }
     });
 
     // Save User in the database
@@ -30,8 +52,25 @@ exports.create = (req, res) => {
             });
         else res.send(data);
     });
-};
 
+    //Envoi d'un mail de confirmation
+    let mailOptions = {
+        from: 'wavechathelp@gmail.com',
+        to: req.body.email,
+        subject: 'Bienvenue sur WaveChat',
+        text: 'Bienvenue sur WaveChat ' + req.body.nomUtilisateur + '! Vous pouvez dès à présent vous connecter à l\'application, et commencer à chatter avec vos amis !',
+        html: "<h1>Bienvenue sur WaveChat " + req.body.nomUtilisateur + " !</h1><h4> Vous pouvez dès à présent vous connecter à l\'application, et commencer à chatter avec vos amis !</h4>"
+    };
+
+    nodemailer.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+
+};
 
 
 //Permet de récupérer tous les utilisateurs de la base de données
