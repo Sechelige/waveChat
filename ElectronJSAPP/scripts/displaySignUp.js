@@ -105,9 +105,7 @@ signButton.addEventListener("click", function () {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log("Success:", data);
             // if the user is created, display the sign in page
-
             let script = document.createElement("script");
             script.src = "scripts/displaySignIn.js";
             document.head.appendChild(script);
