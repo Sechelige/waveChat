@@ -418,3 +418,23 @@ input[type="text"]::placeholder {
      border-radius: 50%;
      margin-top: 30px;
 }
+
+/* styles for the context menu*/
+#contextMenu {
+     position: absolute;
+     background-color: black;
+     border-radius: 10px;
+     padding: 10px;
+     display: none;
+}
+
+#contextMenu p {
+     color: white;
+     margin: 0;
+     padding: 0;
+     cursor: pointer;
+}
+
+#contextMenu p:hover {
+     text-decoration: underline;
+}
