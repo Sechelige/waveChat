@@ -4,14 +4,14 @@ const connexion = function(connexion) {
     numCheck = connexion.numCheck;
 }
 
-connexion.createNumcheck = (tagUtilisateur, numCheck, result) => {
-    sql.query("UPDATE Utilisateur SET numCheck = ? WHERE tagUtilisateur = ?", [numCheck, tagUtilisateur], (err, res) => {
+connexion.createNumcheck = (email, numCheck, result) => {
+    sql.query("UPDATE Utilisateur SET numCheck = ? WHERE email = ?", [numCheck, email], (err, res) => {
         if (err) {
             console.log("Erreur lors de la création de numCheck : ", err);
             result(err, null);
           } else {
-            console.log("NumCheck créé avec succès : ", { tagUtilisateur: tagUtilisateur, numCheck: numCheck });
-            result(null, { tagUtilisateur: tagUtilisateur, numCheck: numCheck });
+            console.log("NumCheck créé avec succès : ", { email: email, numCheck: numCheck });
+            result(null, { email: email, numCheck: numCheck });
             }
     });    
 }

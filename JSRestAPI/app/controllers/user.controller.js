@@ -26,50 +26,41 @@ exports.create = (req, res) => {
         email: req.body.email
     });
 
-    //verification de l'unicité de l'email
-    user.checkEmail(req.body.email, (err, data) => {
+    //verification de l'unicité de l'email de l'utilisateur dans la base de données si l'email est déjà utilisé, on renvoie une erreur et on ne crée pas l'utilisateur
+    user.checkEmail(req.body.email, (err, email) => {
         if (err) {
-            if (err.kind === "not_found") {
-                console.log("Email non trouvé");
-            } else {
-                res.status(500).send({
-                    message: "Error retrieving Tutorial with id " + req.params.tagUtilisateur
-                });
-            }
+            // Save User in the database
+            user.create(nUser, (err, data) => {
+                if (err)
+                    res.status(500).send({
+                        message:
+                            err.message || 'Some error occurred while creating the User.'
+                    });
+                else res.send(data);
+            });
+
+            //Envoi d'un mail de confirmation
+            let mailOptions = {
+                from: 'wavechathelp@gmail.com',
+                to: req.body.email,
+                subject: 'Bienvenue sur WaveChat',
+                text: 'Bienvenue sur WaveChat ' + req.body.nomUtilisateur + '! Vous pouvez dès à présent vous connecter à l\'application, et commencer à chatter avec vos amis !',
+                html: "<h1>Bienvenue sur WaveChat " + req.body.nomUtilisateur + " !</h1><h4> Vous pouvez dès à présent vous connecter à l\'application, et commencer à chatter avec vos amis !</h4>"
+            };
+
+            nodemailer.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
         } else {
             res.status(500).send({
-                message: "Email déjà utilisé"
+                message: 'Email already used'
             });
         }
     });
-
-    // Save User in the database
-    user.create(nUser, (err, data) => {
-        if (err)
-            res.status(500).send({
-                message:
-                    err.message || 'Some error occurred while creating the User.'
-            });
-        else res.send(data);
-    });
-
-    //Envoi d'un mail de confirmation
-    let mailOptions = {
-        from: 'wavechathelp@gmail.com',
-        to: req.body.email,
-        subject: 'Bienvenue sur WaveChat',
-        text: 'Bienvenue sur WaveChat ' + req.body.nomUtilisateur + '! Vous pouvez dès à présent vous connecter à l\'application, et commencer à chatter avec vos amis !',
-        html: "<h1>Bienvenue sur WaveChat " + req.body.nomUtilisateur + " !</h1><h4> Vous pouvez dès à présent vous connecter à l\'application, et commencer à chatter avec vos amis !</h4>"
-    };
-
-    nodemailer.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-
 };
 
 
@@ -96,19 +87,19 @@ exports.findAll = (req, res) => {
 //
 exports.findOne = (req, res) => {
     user.findById(req.params.tagUtilisateur, (err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Tutorial with id ${req.params.tagUtilisateur}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "Error retrieving Tutorial with id " + req.params.tagUtilisateur
-          });
-        }
-      } else res.send(data);
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found Tutorial with id ${req.params.tagUtilisateur}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving Tutorial with id " + req.params.tagUtilisateur
+                });
+            }
+        } else res.send(data);
     });
-  };
+};
 
 
 

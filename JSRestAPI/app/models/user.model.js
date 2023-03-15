@@ -112,7 +112,7 @@ User.removeById = (tagUtilisateur, result) => {
     });
 }
 
-User.getEmailByUser = (tagUtilisateur, result) => {
+/*User.getEmailByUser = (tagUtilisateur, result) => {
     sql.query(`SELECT email FROM Utilisateur WHERE tagUtilisateur = ${tagUtilisateur}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -126,7 +126,7 @@ User.getEmailByUser = (tagUtilisateur, result) => {
             }
         }
     });
-}
+}*/
 
 User.checkEmail = (email, result) => {
     sql.query("SELECT email FROM Utilisateur WHERE email = ?", email, (err, res) => {
@@ -143,6 +143,5 @@ User.checkEmail = (email, result) => {
             }
     });
 }
-
 
 module.exports = User;

@@ -5,7 +5,7 @@ module.exports = app => {
 
     router.put("/okcon/:email", connexion.okNumcheck);
 
-    router.get("/askcon/:tagUtilisateur", connexion.createNumcheck);
+    router.get("/askcon/:email", connexion.createNumcheck);
 
     app.use("/app/connexion", router);
 };
