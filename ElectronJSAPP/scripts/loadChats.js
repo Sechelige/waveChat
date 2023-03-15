@@ -1,4 +1,4 @@
-let userId = 16;
+
 console.log(`loadChats loaded\n ${apiRootAddress}/app/conversation/conv/user/${userId}`)
 fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
