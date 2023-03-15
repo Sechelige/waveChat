@@ -39,19 +39,6 @@ email.setAttribute("id", "email");
 email.setAttribute("name", "email");
 email.setAttribute("required", "");
 
-signPassword = document.createElement("label");
-signPassword.setAttribute("class", "signText");
-signPassword.setAttribute("id", "signPassword");
-signPassword.setAttribute("for", "password");
-signPassword.innerText = "Mot de passe";
-
-password = document.createElement("input");
-password.setAttribute("class", "inputSign");
-password.setAttribute("type", "password");
-password.setAttribute("id", "password");
-password.setAttribute("name", "password");
-password.setAttribute("required", "");
-
 /// AJOUTER LES APPENDCHILD
 noAccount = document.createElement("p");
 noAccount.setAttribute("id", "noAccount");
@@ -81,11 +68,6 @@ signInBox.appendChild(textConnexion);
 signInBox.appendChild(signEmail);
 signInBox.appendChild(document.createElement("br"));
 signInBox.appendChild(email);
-signInBox.appendChild(document.createElement("br"));
-signInBox.appendChild(document.createElement("br"));
-signInBox.appendChild(signPassword);
-signInBox.appendChild(document.createElement("br"));
-signInBox.appendChild(password);
 signInBox.appendChild(document.createElement("br"));
 signInBox.appendChild(signButton);
 signInBox.appendChild(noAccount);

@@ -43,14 +43,35 @@ signPassword = document.createElement("label");
 signPassword.setAttribute("class", "signText");
 signPassword.setAttribute("id", "signPassword");
 signPassword.setAttribute("for", "password");
-signPassword.innerText = "Mot de passe";
+signPassword.innerText = "Nom d'utilisateur";
 
 password = document.createElement("input");
 password.setAttribute("class", "inputSign");
-password.setAttribute("type", "password");
 password.setAttribute("id", "password");
 password.setAttribute("name", "password");
 password.setAttribute("required", "");
+
+// file input for profile picture
+fileInput.setAttribute("type", "file");
+fileInput.setAttribute("name", "file");
+fileInput.setAttribute("id", "file");
+fileInput.setAttribute("class", "inputfile");
+// when a file is selected, display the image
+fileInput.addEventListener("change", function () {
+    if (this.files && this.files[0]) {
+        let img = document.getElementById("imgProfile");
+        img.src = URL.createObjectURL(this.files[0]);
+    }
+});
+fileLabel = document.createElement("label");
+fileLabel.setAttribute("for", "file");
+fileLabel.innerText = "Choisir une photo de profil";
+
+// displaying the input image from the fileinput
+img = document.createElement("img");
+img.setAttribute("id", "imgProfile");
+img.setAttribute("src", "https://via.placeholder.com/150");
+img.setAttribute("alt", "your image");
 
 /// AJOUTER LES APPENDCHILD
 noAccount = document.createElement("p");
@@ -66,7 +87,7 @@ noAccount.addEventListener("click", function(){
 signButton = document.createElement("input");
 signButton.setAttribute("id", "signButton");
 signButton.setAttribute("type", "submit");
-signButton.setAttribute("value", "Se connecter");
+signButton.setAttribute("value", "S'inscrire");
 signButton.addEventListener("click", function () {
      let script = document.createElement("script");
      script.src = "scripts/displayWave.js";
@@ -87,6 +108,11 @@ signInBox.appendChild(signPassword);
 signInBox.appendChild(document.createElement("br"));
 signInBox.appendChild(password);
 signInBox.appendChild(document.createElement("br"));
+signInBox.appendChild(document.createElement("br"));
+signInBox.appendChild(fileInput);
+signInBox.appendChild(fileLabel);
+signInBox.appendChild(document.createElement("br"));
+signInBox.appendChild(img);
 signInBox.appendChild(signButton);
 signInBox.appendChild(noAccount);
 backgroundSignIn.appendChild(signInBox);
