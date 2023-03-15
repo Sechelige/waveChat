@@ -1,8 +1,9 @@
-let userId = 1;
-
+let userId = 16;
+console.log(`loadChats loaded\n ${apiRootAddress}/app/conversation/conv/user/${userId}`)
 fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
      .then((data) => {
+          console.log(`Fetch to route ${apiRootAddress}/app/conversation/conv/user/${userId}\n${data}`)
           if (data.length > 0) {
                data.forEach((chat) => {
                     const containerChat = document.createElement("div");
