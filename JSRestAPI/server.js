@@ -21,7 +21,7 @@ require('./app/routes/conversation.routes.js')(app);
 require('./app/routes/message.routes.js')(app);
 require('./app/routes/connexion.routes.js')(app);
 
-const PORT = process.env.PORT || 6500;
+const PORT = process.env.PORT ||26500;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 }); 
