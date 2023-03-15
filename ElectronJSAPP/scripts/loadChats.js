@@ -1,6 +1,6 @@
 let userId = 1;
 
-fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
+fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
      .then((data) => {
           if (data.length > 0) {
@@ -63,7 +63,7 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
      });
 
 function loadMessagesClick(convId) {
-     fetch(`http://wavechatapi.ddns.net:6500/app/message/conv/${convId}`)
+     fetch(`${apiRootAddress}/app/message/conv/${convId}`)
           .then((response) => response.json())
           .then((data) => {
                let messages = "";
