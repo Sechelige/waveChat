@@ -22,7 +22,7 @@ Gerer les conversations :
 - DELETE /conversation/conv/{idConv} : Permet de supprimer une conversation en fonction de son id
 
 Gerer les connexion : 
-- GET /connexion/askcon/{idUser} : Permet de demander une connexion a un utilisateur en fonction de son id
+- GET /connexion/askcon/{emailUser} : Permet de demander une connexion a un utilisateur en fonction de son id
 - POST /connexion/okcon/{emailUser} : Permet de valider une demande de connexion en fonction de l'email de l'utilisateur -> revoie (true, false)
 
 si l'API ne fonctionne pas, il faut verifier que le serveur est bien en marche :

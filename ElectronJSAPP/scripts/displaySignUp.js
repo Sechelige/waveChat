@@ -77,7 +77,7 @@ img.setAttribute("alt", "your image");
 noAccount = document.createElement("p");
 noAccount.setAttribute("id", "noAccount");
 noAccount.innerText = "Se connecter";
-noAccount.addEventListener("click", function(){
+noAccount.addEventListener("click", function () {
     let script = document.createElement("script");
     script.src = "scripts/displaySignIn.js";
     document.head.appendChild(script);
@@ -89,9 +89,27 @@ signButton.setAttribute("id", "signButton");
 signButton.setAttribute("type", "submit");
 signButton.setAttribute("value", "S'inscrire");
 signButton.addEventListener("click", function () {
-     let script = document.createElement("script");
-     script.src = "scripts/displayWave.js";
-     document.head.appendChild(script);
+    // post fetch with email and username
+    let email = document.getElementById("email").value;
+    let username = document.getElementById("password").value;
+    fetch(`${apiRootAddress}/app/user`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            "nomUtilisateur": username,
+            "photoProfil": "none",
+            "email": email,
+        }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            // if the user is created, display the sign in page
+            let script = document.createElement("script");
+            script.src = "scripts/displaySignIn.js";
+            document.head.appendChild(script);
+        });
 });
 
 containerWave.appendChild(logoWave);
