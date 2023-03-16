@@ -8,7 +8,7 @@ const Conversation = function(conversation) {
     this.urlImage = conversation.urlImage;
 }
 
-Conversation.createWithUser = (newConversation, tagUtilisateur1, tagUtilisateur2, result) => {
+Conversation.createWithUsers = (newConversation, tagUtilisateur, result) => {
     sql.query("INSERT INTO Conversation SET ?", newConversation, (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -16,19 +16,20 @@ Conversation.createWithUser = (newConversation, tagUtilisateur1, tagUtilisateur2
             return;
         }
 
-    sql.query(`
-    INSERT INTO UtilisateursConv (idConversation, tagUtilisateur)
-    VALUES ((SELECT idConversation FROM Conversation WHERE idConversation = ${res.insertId}),${tagUtilisateur1}),
-    ((SELECT idConversation FROM Conversation WHERE idConversation = ${res.insertId}),${tagUtilisateur2});`
-    , (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
+        for (let i = 0; i < tagUtilisateur.length; i++) {
+            sql.query(`
+            INSERT INTO UtilisateursConv (idConversation, tagUtilisateur)
+            VALUES ((SELECT idConversation FROM Conversation WHERE idConversation = ${res.insertId}),${tagUtilisateur[i]});
+            `, (err, res) => {
+                if (err) {
+                    console.log("error: ", err);
+                    result(err, null);
+                    return;
+                }
+            });
         }
-    });
         console.log("created conversation: ", { id: res.insertId, ...newConversation });
-        result(null, { id: res.insertId, ...newConversation });
+        result(null, { id: res.insertId, ...newConversation, tagUtilisateur: tagUtilisateur});
     });
 }
 

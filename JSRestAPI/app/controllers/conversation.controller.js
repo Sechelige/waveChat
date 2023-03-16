@@ -3,7 +3,8 @@ const conversation = require('../models/conversation.model.js');
 //Permet de créer une conversation avec deux utilisateurs dans la base de données
 //route : /app/conversation/user/:tagUtilisateur1/:tagUtilisateur2 (POST)
 //
-exports.createWithUser = (req, res) => {
+
+exports.createGroupeConversation = (req, res) => {
     // Validate request
     if (!req.body) {
         res.status(400).send({
@@ -11,6 +12,12 @@ exports.createWithUser = (req, res) => {
         });
     }
 
+    if (req.body.tabTagUtilisateur.length < 2) {
+        res.status(400).send({
+            message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
+        });
+    }
+    
     // Create a Conversation
     const nConversation = new conversation({
         nomConversation: req.body.nomConversation,
@@ -19,7 +26,7 @@ exports.createWithUser = (req, res) => {
     });
 
     // Save Conversation in the database
-    conversation.createWithUser(nConversation, req.params.tagUtilisateur1, req.params.tagUtilisateur2, function (err, data) {
+    conversation.createWithUsers(nConversation, req.body.tabTagUtilisateur, function (err, data) {
             if (err)
                 res.status(500).send({
                     message: err.message || 'Une erreur est survenue lors de la création de la conversation.'
@@ -28,6 +35,7 @@ exports.createWithUser = (req, res) => {
                 res.send(data);
         });
 }
+
 
 
 
