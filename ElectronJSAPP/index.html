@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/styleChats.css">
     <script>
         const apiRootAddress = "http://grxnd3r.freeboxos.fr:26500";
-        const userId = 17;
-        
+        var userId;
         var emailValue = "";
         var backgroundSignIn = document.getElementById("backgroundSignIn");
         var signInBox = document.getElementById("signInBox");
@@ -25,11 +24,36 @@
         var signButton = document.getElementById("signButton");
         var fileInput = document.createElement("input");
         var fileLabel = document.createElement("label");
+
+        // Fetching userId from KEY.json
+        fetch("KEY.json")
+            .then(response => response.json())
+            .then(data => {
+                let script = document.createElement("script");
+                if (userId != "") {
+                    userId = data.userId;
+                    script.setAttribute("src", "scripts/displayWave.js");
+                } else {
+                    script.setAttribute("src", "scripts/displaySignIn.js");
+                }
+                document.head.appendChild(script);
+            })
+            .catch(error => console.log("Error fetching KEY.json:", error));
+
+        function displaySignIn() {
+            // Function to display sign in form
+            // ...
+        }
+
+        function displayWave() {
+            // Function to display wave logo
+            // ...
+        }
     </script>
 </head>
 
 <body>
-    <script src="scripts/displaySignIn.js"></script>
+    <!-- HTML content goes here -->
 </body>
 
 </html>
