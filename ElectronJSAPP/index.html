@@ -30,7 +30,7 @@
             .then(response => response.json())
             .then(data => {
                 let script = document.createElement("script");
-                if (userId != "") {
+                if (data.userId !== "unlogged") { // If userId is defined, then the user is already signed in
                     userId = data.userId;
                     script.setAttribute("src", "scripts/displayWave.js");
                 } else {
