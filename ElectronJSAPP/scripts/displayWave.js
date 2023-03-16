@@ -70,9 +70,9 @@ textNoChatSelected.setAttribute('id', 'textNoChatSelected');
 textNoChatSelected.innerText = "Cliquez sur une conversation pour commencer à discuter";
 containerDiscussion.appendChild(textNoChatSelected);
 
-const scriptMessages = document.createElement('script');
-scriptMessages.setAttribute('src', 'scripts/loadMessages.js');
-containerDiscussion.appendChild(scriptMessages);
+// const scriptMessages = document.createElement('script');
+// scriptMessages.setAttribute('src', 'scripts/loadMessages.js');
+// containerDiscussion.appendChild(scriptMessages);
 
 const scriptContainerMessages = document.createElement('script');
 scriptContainerMessages.setAttribute('src', 'scripts/containerMessagesScrolledDown.js');
@@ -102,66 +102,3 @@ sendMessengerButton.textContent = 'Send';
 containerMessenger.appendChild(sendMessengerButton);
 document.body.appendChild(containerMessenger);
 document.body.appendChild(containerLeftbar);
-
-// Code to display the context menu on right click anywhere on the page, there can't be several context menus at the same time. The context menu is displayed on the position of the cursor. The context menu is removed on click.
-document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-    let contextMenu = document.createElement('div');
-    contextMenu.setAttribute('id', 'contextMenu');
-    contextMenu.style.left = e.pageX + 'px';
-    contextMenu.style.top = e.pageY + 'px';
-    document.body.appendChild(contextMenu);
-
-    let contextMenuClose = document.createElement('div');
-    contextMenuClose.setAttribute('id', 'contextMenuClose');
-    contextMenuClose.innerText = 'X';
-    contextMenu.appendChild(contextMenuClose);
-
-    let contextMenuCloseButton = document.createElement('button');
-    contextMenuCloseButton.setAttribute('id', 'contextMenuCloseButton');
-    contextMenuClose.appendChild(contextMenuCloseButton);
-    contextMenuCloseButton.addEventListener('click', function () {
-        contextMenu.remove();
-    })
-
-    let contextMenuOption1 = document.createElement('div');
-    contextMenuOption1.setAttribute('id', 'contextMenuOption1');
-    contextMenuOption1.innerText = 'Option 1';
-    contextMenu.appendChild(contextMenuOption1);
-
-    let contextMenuOption2 = document.createElement('div');
-    contextMenuOption2.setAttribute('id', 'contextMenuOption2');
-    contextMenuOption2.innerText = 'Option 2';
-    contextMenu.appendChild(contextMenuOption2);
-
-    let contextMenuOption3 = document.createElement('div');
-    contextMenuOption3.setAttribute('id', 'contextMenuOption3');
-    contextMenuOption3.innerText = 'Option 3';
-    contextMenu.appendChild(contextMenuOption3);
-
-    let contextMenuOption4 = document.createElement('div');
-    contextMenuOption4.setAttribute('id', 'contextMenuOption4');
-    contextMenuOption4.innerText = 'Option 4';
-    contextMenu.appendChild(contextMenuOption4);
-
-    let contextMenuOption5 = document.createElement('div');
-    contextMenuOption5.setAttribute('id', 'contextMenuOption5');
-    contextMenuOption5.innerText = 'Option 5';
-    contextMenu.appendChild(contextMenuOption5);
-
-    let contextMenuOption6 = document.createElement('div');
-    contextMenuOption6.setAttribute('id', 'contextMenuOption6');
-    contextMenuOption6.innerText = 'Option 6';
-    contextMenu.appendChild(contextMenuOption6);
-
-    let contextMenuOption7 = document.createElement('div');
-    contextMenuOption7.setAttribute('id', 'contextMenuOption7');
-    contextMenuOption7.innerText = 'Option 7';
-    contextMenu.appendChild(contextMenuOption7);
-
-    let contextMenuOption8 = document.createElement('div');
-    contextMenuOption8.setAttribute('id', 'contextMenuOption8');
-    contextMenuOption8.innerText = 'Option 8';
-    contextMenu.appendChild(contextMenuOption8);
-
-});

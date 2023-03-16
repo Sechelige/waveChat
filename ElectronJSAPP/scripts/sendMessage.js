@@ -31,7 +31,7 @@ inputElement.addEventListener("keyup", function (event) {
                ///
 
                fetch(
-                    `http://wavechatapi.ddns.net:6500/app/message/conv/${idConv}/user/${idUser}`,
+                    `${apiRootAddress}/app/message/conv/${idConv}/user/${idUser}`,
                     {
                          method: "POST",
                          headers: {
@@ -43,7 +43,7 @@ inputElement.addEventListener("keyup", function (event) {
                     .then((response) => response.json())
                     .then((data) => {
                          fetch(
-                              `http://wavechatapi.ddns.net:6500/app/message/conv/${idConv}`
+                              `${apiRootAddress}/app/message/conv/${idConv}`
                          )
                               .then((response) => response.json())
                               .then((data) => {

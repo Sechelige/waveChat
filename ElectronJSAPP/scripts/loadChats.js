@@ -1,8 +1,9 @@
-let userId = 1;
 
-fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
+console.log(`loadChats loaded\n ${apiRootAddress}/app/conversation/conv/user/${userId}`)
+fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
      .then((data) => {
+          console.log(`Fetch to route ${apiRootAddress}/app/conversation/conv/user/${userId}\n${data}`)
           if (data.length > 0) {
                data.forEach((chat) => {
                     const containerChat = document.createElement("div");
@@ -63,7 +64,7 @@ fetch(`http://wavechatapi.ddns.net:6500/app/conversation/conv/user/${userId}`)
      });
 
 function loadMessagesClick(convId) {
-     fetch(`http://wavechatapi.ddns.net:6500/app/message/conv/${convId}`)
+     fetch(`${apiRootAddress}/app/message/conv/${convId}`)
           .then((response) => response.json())
           .then((data) => {
                let messages = "";
