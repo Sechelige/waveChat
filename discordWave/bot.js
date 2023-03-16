@@ -18,7 +18,7 @@ client.once('ready', () => {
   client.users.fetch('330436435763265537')
     .then(user => {
       // Send a message to the user
-      user.send('Hello, I am your friendly neighborhood bot!');
+      user.send('Hello ! The wave central is up and running !');
     })
     .catch(error => {
       console.error(error);
