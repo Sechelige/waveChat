@@ -25,7 +25,7 @@ slogan.innerText = "La messagerie qui a une vague d'avance";
 
 textConnexion = document.createElement("p");
 textConnexion.setAttribute("id", "textConnexion");
-textConnexion.innerText = "Connexion";
+textConnexion.innerText = "Code de vérification";
 
 signEmail = document.createElement("label");
 signEmail.setAttribute("class", "signText");
@@ -57,7 +57,7 @@ signButton.setAttribute("type", "submit");
 signButton.setAttribute("value", "Se connecter");
 signButton.addEventListener("click", function () {
      let script = document.createElement("script");
-     script.src = "scripts/displayCodeVerif.js";
+     script.src = "";
      document.head.appendChild(script);
 });
 
