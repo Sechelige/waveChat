@@ -1,5 +1,4 @@
 var inputElement = document.getElementById("inputMessenger");
-var idUser = 1; // id du user
 
 inputElement.addEventListener("keyup", function (event) {
      if (event.key === "Enter") { // quand entrée dans la barre d'input
@@ -31,7 +30,7 @@ inputElement.addEventListener("keyup", function (event) {
                ///
 
                fetch(
-                    `${apiRootAddress}/app/message/conv/${idConv}/user/${idUser}`,
+                    `${apiRootAddress}/app/message/conv/${idConv}/user/${userId}`,
                     {
                          method: "POST",
                          headers: {

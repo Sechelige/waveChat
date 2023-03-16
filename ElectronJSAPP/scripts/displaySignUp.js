@@ -58,10 +58,10 @@ fileInput.setAttribute("id", "file");
 fileInput.setAttribute("class", "inputfile");
 // when a file is selected, display the image
 fileInput.addEventListener("change", function () {
-    if (this.files && this.files[0]) {
-        let img = document.getElementById("imgProfile");
-        img.src = URL.createObjectURL(this.files[0]);
-    }
+     if (this.files && this.files[0]) {
+          let img = document.getElementById("imgProfile");
+          img.src = URL.createObjectURL(this.files[0]);
+     }
 });
 fileLabel = document.createElement("label");
 fileLabel.setAttribute("for", "file");
@@ -78,9 +78,9 @@ noAccount = document.createElement("p");
 noAccount.setAttribute("id", "noAccount");
 noAccount.innerText = "Se connecter";
 noAccount.addEventListener("click", function () {
-    let script = document.createElement("script");
-    script.src = "scripts/displaySignIn.js";
-    document.head.appendChild(script);
+     let script = document.createElement("script");
+     script.src = "scripts/displaySignIn.js";
+     document.head.appendChild(script);
 });
 ///
 
@@ -89,27 +89,27 @@ signButton.setAttribute("id", "signButton");
 signButton.setAttribute("type", "submit");
 signButton.setAttribute("value", "S'inscrire");
 signButton.addEventListener("click", function () {
-    // post fetch with email and username
-    let email = document.getElementById("email").value;
-    let username = document.getElementById("password").value;
-    fetch(`${apiRootAddress}/app/user`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            "nomUtilisateur": username,
-            "photoProfil": "none",
-            "email": email,
-        }),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            // if the user is created, display the sign in page
-            let script = document.createElement("script");
-            script.src = "scripts/displaySignIn.js";
-            document.head.appendChild(script);
-        });
+     // post fetch with email and username
+     let email = document.getElementById("email").value;
+     let username = document.getElementById("password").value;
+     fetch(`${apiRootAddress}/app/user`, {
+          method: "PUT",
+          headers: {
+               "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+               nomUtilisateur: username,
+               photoProfil: "none",
+               email: email,
+          }),
+     })
+          .then((response) => response.json())
+          .then((data) => {
+               // if the user is created, display the sign in page
+               let script = document.createElement("script");
+               script.src = "scripts/displaySignIn.js";
+               document.head.appendChild(script);
+          });
 });
 
 containerWave.appendChild(logoWave);

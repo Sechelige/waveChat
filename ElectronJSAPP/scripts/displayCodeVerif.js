@@ -39,7 +39,6 @@ email.setAttribute("id", "email");
 email.setAttribute("name", "email");
 email.setAttribute("required", "");
 
-/// AJOUTER LES APPENDCHILD
 noAccount = document.createElement("p");
 noAccount.setAttribute("id", "noAccount");
 noAccount.innerText = "S'inscrire";
@@ -48,17 +47,33 @@ noAccount.addEventListener("click", function () {
      script.src = "scripts/displaySignUp.js";
      document.head.appendChild(script);
 });
-///
 
 signButton = document.createElement("input");
 signButton.setAttribute("id", "signButton");
 signButton.setAttribute("type", "submit");
 signButton.setAttribute("value", "Se connecter");
 signButton.addEventListener("click", function () {
-    fetch(`${apiRootAddress}/app/connexion/okcon`)
-     let script = document.createElement("script");
-     script.src = "displayWave.js";
-     document.head.appendChild(script);
+     fetch(`${apiRootAddress}/app/connexion/okcon/${emailValue}`, {
+          method: "PUT",
+          headers: {
+               "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+               "numCheck": email.value,
+          }),
+     })
+          .then((response) => response.json())
+          .then((data) => {
+               if (data) {
+                    let script = document.createElement("script");
+                    script.src = "scripts/displayWave.js";
+                    document.head.appendChild(script);
+               }
+               else {
+                    signEmail.style.color = "red";
+                    signEmail.innerText = "Code de vérification incorrect";
+               }
+          });
 });
 
 containerWave.appendChild(logoWave);

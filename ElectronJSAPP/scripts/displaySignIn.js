@@ -5,7 +5,6 @@ backgroundSignIn.setAttribute("id", "backgroundSignIn");
 signInBox = document.createElement("div");
 signInBox.setAttribute("id", "signInBox");
 
-
 containerWave = document.createElement("div");
 containerWave.setAttribute("id", "containerWave");
 
@@ -44,10 +43,10 @@ email.setAttribute("required", "");
 noAccount = document.createElement("p");
 noAccount.setAttribute("id", "noAccount");
 noAccount.innerText = "S'inscrire";
-noAccount.addEventListener("click", function(){
-    let script = document.createElement("script");
-    script.src = "scripts/displaySignUp.js";
-    document.head.appendChild(script);
+noAccount.addEventListener("click", function () {
+     let script = document.createElement("script");
+     script.src = "scripts/displaySignUp.js";
+     document.head.appendChild(script);
 });
 ///
 
@@ -55,9 +54,9 @@ signButton = document.createElement("input");
 signButton.setAttribute("id", "signButton");
 signButton.setAttribute("type", "submit");
 signButton.setAttribute("value", "Se connecter");
-var emailValue = email.value;
 signButton.addEventListener("click", function () {
-    fetch(`${apiRootAddress}/app/connexion/askcon/${email.value}`)
+    emailValue = email.value;
+     fetch(`${apiRootAddress}/app/connexion/askcon/${emailValue}`);
      let script = document.createElement("script");
      script.src = "scripts/displayCodeVerif.js";
      document.head.appendChild(script);
