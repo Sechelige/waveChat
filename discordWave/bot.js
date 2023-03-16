@@ -13,7 +13,16 @@ client.once('ready', () => {
       type: 'WATCHING'
     }
   });
+
+  // Fetch the user with ID 330436435763265537
+  client.users.fetch('330436435763265537')
+    .then(user => {
+      // Send a message to the user
+      user.send('Hello, I am your friendly neighborhood bot!');
+    })
+    .catch(error => {
+      console.error(error);
+    });
 });
 
 client.login(token);
-
