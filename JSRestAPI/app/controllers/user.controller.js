@@ -90,18 +90,32 @@ exports.findOne = (req, res) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Tutorial with id ${req.params.tagUtilisateur}.`
+                    message: `Not found User with id ${req.params.tagUtilisateur}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Error retrieving Tutorial with id " + req.params.tagUtilisateur
+                    message: "Error retrieving User with id " + req.params.tagUtilisateur
                 });
             }
         } else res.send(data);
     });
 };
 
-
+exports.getUserByEmail = (req, res) => {
+    user.findByEmail(req.params.email, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found User with id ${req.params.email}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving User with id " + req.params.email
+                });
+            }
+        } else res.send(data);
+    });
+};
 
 //Permet de mettre à jour un utilisateur de la base de données en fonction de son tag
 //route : /app/user/:tagUtilisateur (PUT)
