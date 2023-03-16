@@ -112,21 +112,25 @@ User.removeById = (tagUtilisateur, result) => {
     });
 }
 
-/*User.getEmailByUser = (tagUtilisateur, result) => {
-    sql.query(`SELECT email FROM Utilisateur WHERE tagUtilisateur = ${tagUtilisateur}`, (err, res) => {
+User.findByEmail = (email, result) => {
+    sql.query("SELECT * FROM Utilisateur WHERE email = ?", email, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
-        } else {
-            if (res.length) {
-                console.log("found user: ", res[0]);
-                result(null, res[0].email);
-            } else {
-                result(null, null);
-            }
+            return;
         }
+
+        if (res.length) {
+            console.log("found user: ", res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        // not found User with the email
+        result({ kind: "not_found" }, null);
     });
-}*/
+}
+
 
 User.checkEmail = (email, result) => {
     sql.query("SELECT email FROM Utilisateur WHERE email = ?", email, (err, res) => {
