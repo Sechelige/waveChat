@@ -65,6 +65,7 @@ signButton.addEventListener("click", function () {
           .then((response) => response.json())
           .then((data) => {
                if (data) {
+
                     let script = document.createElement("script");
                     script.src = "scripts/displayWave.js";
                     document.head.appendChild(script);
