@@ -43,6 +43,7 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                for (let i = 0; i < myDivs.length; i++) {
                     myDivs[i].addEventListener("click", function () {
                          // Remove background color from all divs
+                         containerMessenger.style.display = "flex";
                          for (let j = 0; j < myDivs.length; j++) {
                               myDivs[j].classList.remove("selected");
                          }

@@ -77,6 +77,7 @@ document.body.appendChild(containerDiscussion);
 
 const containerMessenger = document.createElement('div');
 containerMessenger.setAttribute('id', 'containerMessenger');
+containerMessenger.style.display = "none";
 
 const messenger = document.createElement('div');
 messenger.setAttribute('id', 'messenger');
