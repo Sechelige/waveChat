@@ -28,28 +28,47 @@ formConv.appendChild(formConvUsers);
 // when pressing enter, a div with the username and it's profile picture is created, and the input field is cleared. The user can then add another user. 
 // When the user is done adding users, he can click on the "Créer la conversation" button to create the conversation
 // when clicking on a user div (with the username and profile picture), the user is removed from the list of users to add to the conversation
-formConvUsers.addEventListener("keyup", function(event) {
+formConvUsers.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
-        event.preventDefault();
-        var divUser = document.createElement("div");
-        divUser.setAttribute("id", "divUser");
-        divUser.setAttribute("data-userId", "null");
-        formConv.appendChild(divUser);
-        var divUserPic = document.createElement("div");
-        divUserPic.setAttribute("id", "divUserPic");
-        divUser.appendChild(divUserPic);
-        var imgUserPic = document.createElement("img");
-        imgUserPic.setAttribute("id", "imgUserPic");
-        imgUserPic.setAttribute("src", "images/profile.png");
-        divUserPic.appendChild(imgUserPic);
-        var divUserName = document.createElement("div");
-        divUserName.setAttribute("id", "divUserName");
-        divUserName.innerText = formConvUsers.value;
-        divUser.appendChild(divUserName);
-        divUser.addEventListener("click", function () {
-            divUser.remove();
-        })
-        formConvUsers.value = "";
+        // if the user exists, store it's username in a variable
+        fetch("http://grxnd3r.freeboxos.fr:26500/app/user/email/" + formConvUsers.value)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                if (data.nomUtilisateur != null) {
+                    var username = data.nomUtilisateur;
+                    event.preventDefault();
+                    var divUser = document.createElement("div");
+                    divUser.setAttribute("id", "divUser");
+                    divUser.setAttribute("data-userId", "null");
+                    formConvUsersList.appendChild(divUser);
+                    var divUserPic = document.createElement("div");
+                    divUserPic.setAttribute("id", "divUserPic");
+                    divUser.appendChild(divUserPic);
+                    var imgUserPic = document.createElement("img");
+                    imgUserPic.setAttribute("id", "imgUserPic");
+                    imgUserPic.setAttribute("src", `images/groupChat.png`);
+                    divUserPic.appendChild(imgUserPic);
+                    var divUserName = document.createElement("div");
+                    divUserName.setAttribute("id", "divUserName");
+                    divUserName.innerText = username;
+                    divUser.appendChild(divUserName);
+                    divUser.addEventListener("click", function () {
+                        divUser.remove();
+                    })
+                    formConvUsers.value = "";
+                }
+                else {
+                    formConvUsers.value = "";
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
     }
 });
 
@@ -58,3 +77,15 @@ formConvSubmit.setAttribute("type", "submit");
 formConvSubmit.setAttribute("id", "formConvSubmit");
 formConvSubmit.innerText = "Créer la conversation";
 formConv.appendChild(formConvSubmit);
+
+// same div as formConv, for the users
+var formConvUsersList = document.createElement("div");
+formConvUsersList.setAttribute("id", "formConvUsersList");
+containerDiscussion.appendChild(formConvUsersList);
+
+// text with "Liste des utilisateurs" above the list of users
+
+var formConvUsersListText = document.createElement("div");
+formConvUsersListText.setAttribute("id", "formConvUsersListText");
+formConvUsersListText.innerText = "Utilisateurs du groupe";
+formConvUsersList.appendChild(formConvUsersListText);

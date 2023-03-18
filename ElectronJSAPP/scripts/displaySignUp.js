@@ -92,8 +92,8 @@ signButton.addEventListener("click", function () {
      // post fetch with email and username
      let email = document.getElementById("email").value;
      let username = document.getElementById("password").value;
-     fetch(`${apiRootAddress}/app/user`, {
-          method: "PUT",
+     fetch(`${apiRootAddress}/app/user/`, {
+          method: "POST",
           headers: {
                "Content-Type": "application/json",
           },
