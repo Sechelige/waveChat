@@ -77,6 +77,34 @@ formConvSubmit.setAttribute("type", "submit");
 formConvSubmit.setAttribute("id", "formConvSubmit");
 formConvSubmit.innerText = "Créer la conversation";
 formConv.appendChild(formConvSubmit);
+// if the button is clicked, the conversation is created, and the user is redirected to the conversation
+formConvSubmit.addEventListener("click", function () {
+    // array of users filled with usernames which are in every divs with the username and profile picture
+    var users = [];
+    var divUsers = document.querySelectorAll("#divUser");
+    divUsers.forEach(function (divUser) {
+        users.push(divUser.querySelector("#divUserName").innerText);
+    });
+    // if the group name and description are not empty, and if there is at least one user in the array of users, create the conversation
+    if (formConvName.value != "" && formConvDescription.value != "" && users.length > 0) {
+        // create the conversation
+        fetch("http://grxnd3r.freeboxos.fr:26500/app/conversation", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nom: formConvName.value,
+                description: formConvDescription.value,
+                utilisateurs: users,
+            }),
+        })
+            .then(function (response) {
+                // leave empty
+            })
+            // end of the fetch
+        }
+    });
 
 // same div as formConv, for the users
 var formConvUsersList = document.createElement("div");

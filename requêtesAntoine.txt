@@ -1,4 +1,4 @@
 - Route avec conversation et son dernier message
-- rajouter url de groupe -> ok
-- rajouter methode get pour obtenir utilisateur avec un email -> ok
-- update conv avec utilisateur unique
+- update conv avec utilisateur seul (nom d'utilisateur)
+- update conv avec noms d'utilisateur et non des codes 
+- get utilisateur par nom d'utilisateur (en plus de mail)

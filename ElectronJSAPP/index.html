@@ -24,7 +24,7 @@
         var signButton = document.getElementById("signButton");
         var fileInput = document.createElement("input");
         var fileLabel = document.createElement("label");
-
+        
         // Fetching userId from KEY.json
         fetch("KEY.json")
             .then(response => response.json())
@@ -39,6 +39,8 @@
                 document.head.appendChild(script);
             })
             .catch(error => console.log("Error fetching KEY.json:", error));
+
+        
     </script>
 </head>
 
