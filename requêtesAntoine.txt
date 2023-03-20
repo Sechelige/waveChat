@@ -2,3 +2,4 @@
 - update conv avec utilisateur seul (nom d'utilisateur)
 - update conv avec noms d'utilisateur et non des codes 
 - get utilisateur par nom d'utilisateur (en plus de mail)
+- id de l'utilisateur dans la réponse du post qui renvoie true, pour pouvoir l'identifier directement dans l'appli
