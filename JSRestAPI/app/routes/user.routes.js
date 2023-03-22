@@ -12,6 +12,9 @@ module.exports = app => {
     // Permet de récupérer un utilisateur de la base de données en fonction de son email
     router.get('/email/:email', user.getUserByEmail);
 
+    // Permet de récupérer tous les utilisateurs de la base de données en fonction de leur nomUtilisateur
+    router.get('/nom/:nomUtilisateur', user.findByName);
+
     // Permet de récupérer un utilisateur de la base de données en fonction de son tag
     router.get('/:tagUtilisateur', user.findOne);
 

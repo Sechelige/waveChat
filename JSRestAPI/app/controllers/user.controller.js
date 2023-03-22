@@ -117,6 +117,28 @@ exports.getUserByEmail = (req, res) => {
     });
 };
 
+//Permet de récupérer tous les utilisateurs de la base de données en fonction de leur nomUtilisateur
+//route : /app/user/nom/:nomUtilisateur (GET)
+//
+//
+exports.findByName = (req, res) => {
+    user.findByNomUtilisateur(req.params.nomUtilisateur, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found User with id ${req.params.nomUtilisateur}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving User with id " + req.params.nomUtilisateur
+                });
+            }
+        } else res.send(data);
+    });
+};
+
+
+
 //Permet de mettre à jour un utilisateur de la base de données en fonction de son tag
 //route : /app/user/:tagUtilisateur (PUT)
 //
