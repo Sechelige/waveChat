@@ -22,13 +22,7 @@ client.once('ready', () => {
     })
     .catch(error => {
       console.error(error);
-    });
-});
-
-client.on('message', message => {
-  if (message.content === '!commands') {
-    message.channel.send('Available Commands: !hello, !goodbye');
-  }
-});
+    })
+})
 
 client.login(token);
