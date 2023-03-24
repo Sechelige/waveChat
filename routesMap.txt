@@ -1,5 +1,5 @@
 Voici l'ensemble des routes disponble pour utiliser l'API : http://wavechatapi.ddns.net:6500/app
-Pour utiliser l'API, il faut utiliser le protocole HTTPS et le port 6500.
+Pour utiliser l'API, il faut utiliser le protocole HTTP et le port 6500.
 
 Gerer les utilisateurs :
 - POST /user : Permet de creer un utilisateur -> dans le jsonbody : (nomUtilisateur, photoProfil, email)
