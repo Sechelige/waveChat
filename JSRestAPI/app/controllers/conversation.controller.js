@@ -136,4 +136,18 @@ exports.deleteConv = (req, res) => {
     });
 }
 
+// TEST DE NINO POUR ADDUSER
+// Permet d'ajouter un utilisateur à une conversation avec son nom d'utilisateur
+// route : /app/conversation/conv/:idConversation/user/:tagUtilisateur (POST)
+//
+exports.addUserToConv = (req, res) => {
+    conversation.addUserToConv(req.params.idConversation, req.params.tagUtilisateur, (err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || 'Une erreur est survenue lors de l\'ajout de l\'utilisateur.'
+            });
+        else res.send(data);
+    });
+}
 
