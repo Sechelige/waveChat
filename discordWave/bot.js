@@ -29,6 +29,13 @@ client.on('message', message => {
   if (message.content === '!commands') {
     message.channel.send('Available Commands: !hello, !goodbye');
   }
+  /*if (message.content === '!uptime') {
+  	const uptime = os.uptime();
+  	const hours = Math.floor(uptime / 3600);
+  	const minutes = Math.floor((uptime % 3600) / 60);
+  	const seconds = Math.floor(uptime % 60);
+  	message.channel.send(`Uptime: ${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+  }*/
 });
 
 client.login(token);
