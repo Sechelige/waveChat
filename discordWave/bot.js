@@ -36,19 +36,23 @@ client.on('message', message => {
   if (message.content === '!ping') {
     message.channel.send('Pong.');
   }
+
   // system uptime command
   if (message.content === '!uptime') {
     message.channel.send(`System uptime: ${process.uptime()} seconds`);
   }
+
   // command that sends the content of a neofetch command on the server
+  // the neofetch text has to be formatted because it's sending unknown characters
   if (message.content === '!neofetch') {
-    const exec = require('child_process').exec;
+    const { exec } = require('child_process');
     exec('neofetch', (err, stdout, stderr) => {
       if (err) {
         console.error(err);
         return;
       }
-      message.channel.send(`\`\`\`${stdout}\`\`\``);
+      const neofetchText = stdout.toString().replace(/`/g, '');
+      message.channel.send(neofetchText);
     });
   }
 });
