@@ -9,3 +9,13 @@
 -------------------------------------------------- OK -------------------------------------------------- 
 
 - get utilisateur par nom d'utilisateur (en plus de mail) -> ok
+
+----------------------------- OUAIS CEST MOI -----------------------------------------------
+ALORS HEU JAI GENRE ESSAYÉ DE CREER DES ROUTES/MODEL/CONVERSATION DANS LES 3 FICHIERS JS CORRESPONDANTS POUR LES CONVERSATIONS 
+CEST DES TRUCS POUR AJOUTER UN UTILISATEUR A UNE CONVERSATION MAIS EH JE SAIS PAS SI CEST LE TRUC CORRECT DU COUP DES QUE TAS LE TEMPS JE TE LAISSE REGARDER
+PARCE QUE SI JAI BIEN COMPRIS COMMENT CA FONCTIONNE, CE SERA PLUS SIMPLE POUR AJOUTER DES ROUTES SIMPLES QUAND JEN AI BESOIN
+VOILA HEU OUI JADORE LE PAIN ET TOI ?
+conversation.model.js
+conversation.controller.js
+conversation.routes.js
+vwala cest les 3 paths pour le truc du truc
