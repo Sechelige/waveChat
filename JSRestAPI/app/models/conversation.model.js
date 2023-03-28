@@ -152,20 +152,20 @@ Conversation.remove = (idConversation, result) => {
 }
 
 // TEST DE NINO POUR ADDUSER
-Conversation.addUser = (idConversation, tagUtilisateur, result) => {
-    sql.query(`
-    INSERT INTO UtilisateursConv (idConversation, tagUtilisateur)
-    VALUES (${idConversation},${tagUtilisateur});`
-    , (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+// Conversation.addUser = (idConversation, tagUtilisateur, result) => {
+//     sql.query(`
+//     INSERT INTO UtilisateursConv (idConversation, tagUtilisateur)
+//     VALUES (${idConversation},${tagUtilisateur});`
+//     , (err, res) => {
+//         if (err) {
+//             console.log("error: ", err);
+//             result(err, null);
+//             return;
+//         }
 
-        console.log("added user to conversation: ", { id: idConversation, ...tagUtilisateur });
-        result(null, { id: idConversation, ...tagUtilisateur });
-    });
-}
+//         console.log("added user to conversation: ", { id: idConversation, ...tagUtilisateur });
+//         result(null, { id: idConversation, ...tagUtilisateur });
+//     });
+// }
 
 module.exports = Conversation;
