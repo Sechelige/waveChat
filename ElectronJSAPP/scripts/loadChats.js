@@ -1,10 +1,14 @@
-
-console.log(`loadChats loaded\n ${apiRootAddress}/app/conversation/conv/user/${userId}`)
+console.log(
+     `loadChats loaded\n ${apiRootAddress}/app/conversation/conv/user/${userId}`
+);
 fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
      .then((data) => {
-          console.log(`Fetch to route ${apiRootAddress}/app/conversation/conv/user/${userId}\n${data}`)
+          console.log(
+               `Fetch to route ${apiRootAddress}/app/conversation/conv/user/${userId}\n${data}`
+          );
           if (data.length > 0) {
+
                data.forEach((chat) => {
                     const containerChat = document.createElement("div");
                     containerChat.setAttribute(
@@ -52,15 +56,19 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                          let convId = this.getAttribute("data-convId");
                          console.log("Clic sur conversation N°" + convId);
                          containerDiscussion.innerHTML = "";
-                         const loadGif = document.createElement('img');
-                         loadGif.setAttribute('class', 'loadingGif');
-                         loadGif.setAttribute('src', 'images/loading.gif');
-                         containerDiscussion.setAttribute('data-convId', convId);
+                         const loadGif = document.createElement("img");
+                         loadGif.setAttribute("class", "loadingGif");
+                         loadGif.setAttribute("src", "images/loading.gif");
+                         containerDiscussion.setAttribute(
+                              "data-convId",
+                              convId
+                         );
                          containerDiscussion.appendChild(loadGif);
                          loadMessagesClick(convId);
                     });
                }
           } else {
+               containerChats.innerHTML = "";
           }
      });
 
@@ -68,23 +76,28 @@ function loadMessagesClick(convId) {
      fetch(`${apiRootAddress}/app/message/conv/${convId}`)
           .then((response) => response.json())
           .then((data) => {
-               let messages = "";
-               for (let i = 0; i < data.length; i++) {
-                    messages += `<div class="messageBox">
+               console.log(data)
+               if (data.length > 0) {
+                    let messages = "";
+                    for (let i = 0; i < data.length; i++) {
+                         messages += `<div class="messageBox">
         <img class="profilePictureMessage" src="images/groupChat.png">
         <div class="textMessage">
           <p class="usernameChat">${data[i].nomUtilisateur}</p>
           <p class="messageContent">${data[i].contenuMessage}</p>
         </div>
       </div>`;
+                    }
+                    containerDiscussion.innerHTML = messages;
+
+                    let objDiv = document.getElementById("containerDiscussion");
+                    objDiv.scrollTop = objDiv.scrollHeight;
+
+                    // Execute code after fetch is finished
+                    console.log("Fetch finished.");
+               } else {
+                    containerDiscussion.innerHTML = "";
                }
-               containerDiscussion.innerHTML = messages;
-
-               let objDiv = document.getElementById("containerDiscussion");
-               objDiv.scrollTop = objDiv.scrollHeight;
-
-               // Execute code after fetch is finished
-               console.log("Fetch finished.");
           })
           .catch((error) => console.error(error));
 }

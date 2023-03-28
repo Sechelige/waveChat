@@ -8,6 +8,12 @@ containerTop.setAttribute("id", "containerTop");
 
 const account = document.createElement("div");
 account.setAttribute("id", "account");
+// when the user clicks on the account icon, the user is redirected to the account page
+account.addEventListener("click", function () {
+     let script = document.createElement("script");
+     script.src = "scripts/displayProfile.js";
+     document.head.appendChild(script);
+});
 
 const accountLink = document.createElement("a");
 accountLink.setAttribute("href", "#");
