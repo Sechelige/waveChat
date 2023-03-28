@@ -12,7 +12,7 @@ exports.createGroupeConversation = (req, res) => {
         });
     }
 
-    if (req.body.tabTagUtilisateur.length() < 2) {
+    if (req.body.tabTagUtilisateur.length < 2) {
         res.status(400).send({
             message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
         });
