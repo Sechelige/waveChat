@@ -24,7 +24,7 @@ module.exports = app => {
     router.delete('/conv/:idConversation', conversation.deleteConv);
 
     // Permet d'ajouter un utilisateur à une conversation
-    router.post('/conv/:idConversation/user/:tagUtilisateur', conversation.addUser);
+    // router.post('/conv/:idConversation/user/:tagUtilisateur', conversation.addUser);
     
     app.use('/app/conversation', router);
 };

@@ -234,13 +234,6 @@ client.on("message", (message) => {
                "!ping - Pong! \n!uptime - System uptime \n!cpu - CPU model \n!cpucores - CPU cores \n!cpumhz - CPU MHz \n!cpuload - CPU load \n!memory - Memory usage \n!disk - Disk usage \n!network - Network \n!networkip - Network IP \n!networkmac - Network MAC \n!networkgateway - Network Gateway \n!networkdns - Network DNS \n!networkspeed - Network Speed \n!networkstatus - Network Status \n!networkconnections - Network Connections"
           );
      }
-
-     // stats command that sends every stats about the linux server
-     if (message.content === "!stats") {
-          message.channel.send(
-               "!ping - Pong! \n!uptime - System uptime \n!cpu - CPU model \n!cpucores - CPU cores \n!cpumhz - CPU MHz \n!cpuload - CPU load \n!memory - Memory usage \n!disk - Disk usage \n!network - Network \n!networkip - Network IP \n!networkmac - Network MAC \n!networkgateway - Network Gateway \n!networkdns - Network DNS \n!networkspeed - Network Speed \n!networkstatus - Network Status \n!networkconnections - Network Connections"
-          );
-     }
 });
 
 client.login(token);
