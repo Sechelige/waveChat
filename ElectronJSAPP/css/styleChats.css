@@ -25,13 +25,7 @@ html {
 }
 
 html {
-     background: rgb(44, 42, 74);
-     background: linear-gradient(
-          270deg,
-          rgba(44, 42, 74, 1) 0%,
-          rgba(79, 81, 140, 1) 50%,
-          rgba(44, 42, 74, 1) 100%
-     );
+     background-color: #4f518c
 }
 
 a {
@@ -74,14 +68,6 @@ a {
      display: flex;
      align-items: center;
      justify-content: center;
-}
-
-#searchForm {
-     width: 150px;
-     height: 50px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
 }
 
 #containerChats {
@@ -155,18 +141,6 @@ a {
      color: #aaa;
      height: auto;
      margin: 0;
-}
-
-/* Searchbar */
-#searchInput {
-     padding: 0;
-     margin: 0;
-     background-color: #4f518c;
-     text-align: center;
-     width: 100%;
-     height: 50%;
-     color: white;
-     border-radius: 50px;
 }
 
 input[type="text"] {

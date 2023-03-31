@@ -8,7 +8,6 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                `Fetch to route ${apiRootAddress}/app/conversation/conv/user/${userId}\n${data}`
           );
           if (data.length > 0) {
-
                data.forEach((chat) => {
                     const containerChat = document.createElement("div");
                     containerChat.setAttribute(
@@ -76,7 +75,7 @@ function loadMessagesClick(convId) {
      fetch(`${apiRootAddress}/app/message/conv/${convId}`)
           .then((response) => response.json())
           .then((data) => {
-               console.log(data)
+               console.log(data);
                if (data.length > 0) {
                     let messages = "";
                     for (let i = 0; i < data.length; i++) {

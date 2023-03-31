@@ -27,15 +27,11 @@ accountLink.appendChild(accountImage);
 account.appendChild(accountLink);
 containerTop.appendChild(account);
 
-const searchForm = document.createElement("form");
-searchForm.setAttribute("id", "searchForm");
-
-const searchInput = document.createElement("input");
-searchInput.setAttribute("type", "text");
-searchInput.setAttribute("id", "searchInput");
-searchInput.setAttribute("placeholder", "Search...");
-searchForm.appendChild(searchInput);
-containerTop.appendChild(searchForm);
+// p to display username of the current user logged in
+const usernameStatus = document.createElement("p");
+usernameStatus.setAttribute("id", "usernameStatus");
+// fetch to get user's username
+fetch
 
 const newMessage = document.createElement("div");
 newMessage.setAttribute("id", "newMessage");
