@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="css/styleChats.css">
     <script>
         const apiRootAddress = "http://grxnd3r.freeboxos.fr:26500";
-        // userId = content of KEY.json
-        
         var userId;
+        var usernameLogged = "";
         var emailValue = "";
         var backgroundSignIn = document.getElementById("backgroundSignIn");
         var signInBox = document.getElementById("signInBox");
@@ -26,7 +25,7 @@
         var signButton = document.getElementById("signButton");
         var fileInput = document.createElement("input");
         var fileLabel = document.createElement("label");
-        
+
         // Fetching userId from KEY.json
         fetch("KEY.json")
             .then(response => response.json())
@@ -34,6 +33,11 @@
                 let script = document.createElement("script");
                 if (data.userId !== "unlogged") { // If userId is defined, then the user is already signed in
                     userId = data.userId;
+                    fetch(`${apiRootAddress}/app/user/${userId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            usernameLogged = data.nomUtilisateur;
+                        })
                     script.setAttribute("src", "scripts/displayWave.js");
                 } else {
                     script.setAttribute("src", "scripts/displaySignIn.js");
@@ -41,10 +45,13 @@
                 document.head.appendChild(script);
             })
             .catch(error => console.log("Error fetching KEY.json:", error));
+        console.log(`${apiRootAddress}/app/users/${userId}`)
+
     </script>
 </head>
 
 <body>
     <!-- HTML content goes here -->
 </body>
+
 </html>

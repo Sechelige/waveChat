@@ -30,8 +30,8 @@ containerTop.appendChild(account);
 // p to display username of the current user logged in
 const usernameStatus = document.createElement("p");
 usernameStatus.setAttribute("id", "usernameStatus");
-// fetch to get user's username
-fetch
+usernameStatus.innerText = "test";
+usernameStatus.appendChild(containerTop)
 
 const newMessage = document.createElement("div");
 newMessage.setAttribute("id", "newMessage");

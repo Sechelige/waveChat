@@ -63,7 +63,6 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                               convId
                          );
                          containerDiscussion.appendChild(loadGif);
-                         loadMessagesClick(convId);
                     });
                }
           } else {
