@@ -220,7 +220,7 @@ input[type="text"]::placeholder {
      align-items: center;
      position: absolute;
      left: 300px;
-     width: calc(100% - 300px);
+     width: calc(100% - 240px);
      bottom: 0;
      z-index: 2;
      height: 60px;
@@ -554,4 +554,39 @@ input[type="text"]::placeholder {
      padding: 0.5%;
      color: white;
      font-size: 2vh;
+}
+
+/* is taking 60% of the current div's width, rounded, background color, box effects, transition and effect on hover centered in the div, elements in column*/
+.profile{
+     position: relative;
+     width: 60%;
+     border-radius: 10px;
+     padding : 20px;
+     background-color: #907ad6;
+     box-shadow: 0 0 5px black;
+     transition: 0.2s;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+     margin: auto;
+     margin-top: 20vh;
+}
+
+/* when the div is hovered, the background color changes */
+.profile:hover {
+     background-color: #2c2a4a;
+     color : white;
+}
+
+.profile_image {
+     position: relative;
+     width: 150px;
+     height: 150px;
+     border-radius: 50%;
+}
+
+#usernameStatus {
+     color:white;
 }

@@ -30,8 +30,13 @@ containerTop.appendChild(account);
 // p to display username of the current user logged in
 const usernameStatus = document.createElement("p");
 usernameStatus.setAttribute("id", "usernameStatus");
-usernameStatus.innerText = "test";
-usernameStatus.appendChild(containerTop)
+fetch(`${apiRootAddress}/app/user/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                usernameStatus.innerText = data.nomUtilisateur;
+            })
+            .catch(error => console.log("Error fetching user:", error));
+containerTop.appendChild(usernameStatus);
 
 const newMessage = document.createElement("div");
 newMessage.setAttribute("id", "newMessage");
@@ -100,11 +105,6 @@ containerMessenger.appendChild(inputMessenger);
 const scriptSendMessage = document.createElement("script");
 scriptSendMessage.setAttribute("src", "scripts/sendMessage.js");
 containerMessenger.appendChild(scriptSendMessage);
-
-const sendMessengerButton = document.createElement("button");
-sendMessengerButton.setAttribute("id", "sendMessenger");
-sendMessengerButton.textContent = "Send";
-containerMessenger.appendChild(sendMessengerButton);
 document.body.appendChild(containerMessenger);
 document.body.appendChild(containerLeftbar);
 

@@ -63,6 +63,7 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                               convId
                          );
                          containerDiscussion.appendChild(loadGif);
+                         loadMessagesClick(convId);
                     });
                }
           } else {
@@ -79,12 +80,12 @@ function loadMessagesClick(convId) {
                     let messages = "";
                     for (let i = 0; i < data.length; i++) {
                          messages += `<div class="messageBox">
-        <img class="profilePictureMessage" src="images/groupChat.png">
-        <div class="textMessage">
-          <p class="usernameChat">${data[i].nomUtilisateur}</p>
-          <p class="messageContent">${data[i].contenuMessage}</p>
-        </div>
-      </div>`;
+                    <img class="profilePictureMessage" src="images/groupChat.png">
+                    <div class="textMessage">
+                         <p class="usernameChat">${data[i].nomUtilisateur}</p>
+                         <p class="messageContent">${data[i].contenuMessage}</p>
+                    </div>
+                    </div>`;
                     }
                     containerDiscussion.innerHTML = messages;
 
