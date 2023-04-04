@@ -72,6 +72,7 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      });
 
 function loadMessagesClick(convId) {
+     // resfresh every 0.5s
      fetch(`${apiRootAddress}/app/message/conv/${convId}`)
           .then((response) => response.json())
           .then((data) => {
@@ -98,5 +99,4 @@ function loadMessagesClick(convId) {
                     containerDiscussion.innerHTML = "";
                }
           })
-          .catch((error) => console.error(error));
 }
