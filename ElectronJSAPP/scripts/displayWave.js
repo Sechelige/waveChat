@@ -110,4 +110,3 @@ document.body.appendChild(containerLeftbar);
 
 // when a chat is selected, the messages are refreshed every 2 seconds
 // setInterval(function () {
-     
