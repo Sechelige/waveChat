@@ -2,9 +2,6 @@ var firstClick = false;
 fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
      .then((data) => {
-          console.log(
-               `Fetch to route ${apiRootAddress}/app/conversation/conv/user/${userId}\n${data}`
-          );
           data.forEach((chat) => {
                const containerChat = document.createElement("div");
                containerChat.setAttribute("data-convId", chat.idConversation);

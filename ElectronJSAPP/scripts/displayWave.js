@@ -13,6 +13,11 @@ account.addEventListener("click", function () {
      let script = document.createElement("script");
      script.src = "scripts/displayProfile.js";
      document.head.appendChild(script);
+     let myDivs = document.getElementsByClassName("containerChat");
+     containerDiscussion.setAttribute("data-convId", "null");
+     for (let j = 0; j < myDivs.length; j++) {
+          myDivs[j].classList.remove("selected");
+     }
 });
 
 const accountLink = document.createElement("a");
@@ -57,9 +62,11 @@ newMessage.addEventListener("click", function () {
      script.src = "scripts/displayCreateConv.js";
      document.head.appendChild(script);
      let myDivs = document.getElementsByClassName("containerChat");
+     containerDiscussion.setAttribute("data-convId", "null");
      for (let j = 0; j < myDivs.length; j++) {
           myDivs[j].classList.remove("selected");
      }
+     
 });
 
 const containerChats = document.createElement("div");
