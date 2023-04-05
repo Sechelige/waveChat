@@ -53,14 +53,20 @@ Conversation.getAllConversation = result => {
 }
 
 
-
+//recuperer toutes les conversations d'un utilisateur (avec le dernier message envoyé de chaque conversation)
 Conversation.getByUser = (tagUtilisateur, result) => {
     sql.query(`
-    SELECT Conversation.idConversation, Conversation.nomConversation
-    FROM Conversation
-    INNER JOIN UtilisateursConv
-    ON Conversation.idConversation = UtilisateursConv.idConversation
-    WHERE UtilisateursConv.tagUtilisateur = ${tagUtilisateur};`
+    SELECT conv.nomConversation, conv.idConversation, msg.contenuMessage
+FROM UtilisateursConv uc
+INNER JOIN Conversation conv ON uc.idConversation = conv.idConversation
+INNER JOIN Message msg ON uc.idConversation = msg.idConversation AND msg.idMessage = 
+(
+   SELECT MAX(idMessage)
+   FROM Message
+   WHERE idConversation = uc.idConversation
+)
+INNER JOIN Utilisateur u ON uc.tagUtilisateur = u.tagUtilisateur
+WHERE u.tagUtilisateur = ${tagUtilisateur};`
     , (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -150,6 +156,29 @@ Conversation.remove = (idConversation, result) => {
         result(null, res);
     });
 }
+
+Conversation.getLastMessage = (idConversation, result) => {
+    sql.query(`
+    SELECT *
+    FROM Message
+    WHERE idConversation = ${idConversation}
+    ORDER BY dateMessage DESC
+    LIMIT 1;`
+    , (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            console.log("found conversation: ", res);
+            result(null, res);
+            return;
+        }
+    });
+}
+
 
 // TEST DE NINO POUR ADDUSER
 // Conversation.addUser = (idConversation, tagUtilisateur, result) => {
