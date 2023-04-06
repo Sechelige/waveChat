@@ -45,10 +45,10 @@ exports.createGroupeConversation = (req, res) => {
                 dateMessage: new Date().toISOString().slice(0, 10),
                 heureMessage: new Date().toISOString().slice(11, 19),
                 idConversation: data.id,
-                tagUtilisateur: 8
+                tagUtilisateur: 12
             });
 
-            message.createByConvByUser(nMessage, data.id, 8, (err, data) => {});
+            message.createByConvByUser(nMessage, data.id, 12, (err, data) => {});
             res.send(data);
         }
         });
