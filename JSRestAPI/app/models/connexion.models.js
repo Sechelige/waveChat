@@ -17,16 +17,14 @@ connexion.createNumcheck = (email, numCheck, result) => {
 }
 
 connexion.getNumCheck = (email, result) => {
-    sql.query("SELECT numCheck FROM Utilisateur WHERE email = ?", email, (err, res) => {
+    sql.query("SELECT numCheck, tagUtilisateur FROM Utilisateur WHERE email = ?", email, (err, res) => {
         if (err) {
             console.log("Erreur lors de la récupération de numCheck : ", err);
             result(err, null);
             } else {
                 if (res.length) {
-                    console.log("NumCheck récupéré avec succès : ", res[0]);
-                    result(null, res[0].numCheck);
-                } else {
-                    result({ kind: "not_found" }, null);
+                    console.log("NumCheck récupéré avec succès : ", res);
+                    result(null, res[0]);
                 }
             }
     });
