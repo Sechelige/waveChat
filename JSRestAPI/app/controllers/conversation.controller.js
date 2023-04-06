@@ -1,5 +1,6 @@
 const conversation = require('../models/conversation.model.js');
-
+const message = require('../models/message.model.js');
+const utilisateur = require('../models/user.model.js');
 //Permet de créer une conversation avec deux utilisateurs dans la base de données
 //route : /app/conversation/user/:tagUtilisateur1/:tagUtilisateur2 (POST)
 //
@@ -12,12 +13,19 @@ exports.createGroupeConversation = (req, res) => {
         });
     }
 
-    if (req.body.tabTagUtilisateur.length < 2) {
+    if (req.body.nomsUtilisateur.length < 2) {
         res.status(400).send({
             message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
         });
     }
-    
+        else {
+            tabTagUtilisateur = [];
+            //traitement pour trouver les utilisateurs et avoir leur id
+            for (user in req.body.nomsUtilisateur) {
+                utilisateur.findByNomUtilisateur(req.body.nomsUtilisateur[user], (err, data) => {tabTagUtilisateur.push(data.tagUtilisateur);});
+        }
+    }
+
     // Create a Conversation
     const nConversation = new conversation({
         nomConversation: req.body.nomConversation,
@@ -26,13 +34,23 @@ exports.createGroupeConversation = (req, res) => {
     });
 
     // Save Conversation in the database
-    conversation.createWithUsers(nConversation, req.body.tabTagUtilisateur, function (err, data) {
-            if (err)
-                res.status(500).send({
-                    message: err.message || 'Une erreur est survenue lors de la création de la conversation.'
-                });
-            else
-                res.send(data);
+    conversation.createWithUsers(nConversation, tabTagUtilisateur, function (err, data) {
+        if (err)
+            res.status(500).send({
+                message: err.message || 'Une erreur est survenue lors de la création de la conversation.'
+            });
+        else {
+            const nMessage = new message({
+                contenuMessage: "",
+                dateMessage: new Date().toISOString().slice(0, 10),
+                heureMessage: new Date().toISOString().slice(11, 19),
+                idConversation: data.id,
+                tagUtilisateur: 8
+            });
+
+            message.createByConvByUser(nMessage, data.id, 8, (err, data) => {});
+            res.send(data);
+        }
         });
 }
 

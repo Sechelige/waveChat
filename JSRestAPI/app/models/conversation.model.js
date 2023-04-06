@@ -52,12 +52,10 @@ Conversation.getAllConversation = result => {
     });
 }
 
-
-//recuperer toutes les conversations d'un utilisateur (avec le dernier message envoyé de chaque conversation)
 Conversation.getByUser = (tagUtilisateur, result) => {
     sql.query(`
-    SELECT conv.nomConversation, conv.idConversation, msg.contenuMessage
-FROM UtilisateursConv uc
+    SELECT conv.idConversation, conv.nomConversation, msg.contenuMessage
+FROM utilisateursConv uc
 INNER JOIN Conversation conv ON uc.idConversation = conv.idConversation
 INNER JOIN Message msg ON uc.idConversation = msg.idConversation AND msg.idMessage = 
 (
@@ -66,7 +64,9 @@ INNER JOIN Message msg ON uc.idConversation = msg.idConversation AND msg.idMessa
    WHERE idConversation = uc.idConversation
 )
 INNER JOIN Utilisateur u ON uc.tagUtilisateur = u.tagUtilisateur
-WHERE u.tagUtilisateur = ${tagUtilisateur};`
+WHERE u.tagUtilisateur = ${tagUtilisateur}
+ORDER BY msg.dateMessage DESC, msg.heureMessage DESC;
+`
     , (err, res) => {
         if (err) {
             console.log("error: ", err);
