@@ -60,6 +60,12 @@ User.findByNomUtilisateur = (nomUtilisateur, result) => {
             return;
         }
 
+        if(!res.length) {
+            console.log("user not found");
+            result({ kind: "not_found" }, null);
+            return;
+        }
+
         if (res.length) {
             console.log("found user: ", res[0]);
             result(null, res[0]);

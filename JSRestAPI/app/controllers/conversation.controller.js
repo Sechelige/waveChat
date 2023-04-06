@@ -18,11 +18,11 @@ exports.createGroupeConversation = (req, res) => {
             message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
         });
     }
-        else {
-            tabTagUtilisateur = [];
-            //traitement pour trouver les utilisateurs et avoir leur id
-            for (user in req.body.nomsUtilisateur) {
-                utilisateur.findByNomUtilisateur(req.body.nomsUtilisateur[user], (err, data) => {tabTagUtilisateur.push(data.tagUtilisateur);});
+    else {
+        tabTagUtilisateur = [];
+        //traitement pour trouver les utilisateurs et avoir leur id
+        for (user in req.body.nomsUtilisateur) {
+            utilisateur.findByNomUtilisateur(req.body.nomsUtilisateur[user], (err, data) => { tabTagUtilisateur.push(data.tagUtilisateur); });
         }
     }
 
@@ -48,10 +48,10 @@ exports.createGroupeConversation = (req, res) => {
                 tagUtilisateur: 8
             });
 
-            message.createByConvByUser(nMessage, data.id, 8, (err, data) => {});
+            message.createByConvByUser(nMessage, data.id, 8, (err, data) => { });
             res.send(data);
         }
-        });
+    });
 }
 
 
@@ -154,18 +154,46 @@ exports.deleteConv = (req, res) => {
     });
 }
 
-// TEST DE NINO POUR ADDUSER
-// Permet d'ajouter un utilisateur à une conversation avec son nom d'utilisateur
-// route : /app/conversation/conv/:idConversation/user/:tagUtilisateur (POST)
-//
-// exports.addUserToConv = (req, res) => {
-//     conversation.addUserToConv(req.params.idConversation, req.params.tagUtilisateur, (err, data) => {
-//         if (err)
-//             res.status(500).send({
-//                 message:
-//                     err.message || 'Une erreur est survenue lors de l\'ajout de l\'utilisateur.'
-//             });
-//         else res.send(data);
-//     });
-// }
+exports.addUserToConv = (req, res) => {
+    //traitement pour trouver les utilisateurs et avoir leur id
+    utilisateur.findByNomUtilisateur(req.body.nomUtilisateur, (err, data) => {
+        if (err) {
+            res.status(500).send({
+                message:
+                    err.message || 'l\'utilisateur : ' + req.body.nomUtilisateur + ' n\'existe pas.'
+            });
+        }
+        else {
+            conversation.addUser(req.params.idConversation, data.tagUtilisateur, (err, data) => {
+                if (err)
+                    res.status(500).send({
+                        message:
+                            err.message || 'Une erreur est survenue lors de l\'ajout de l\'utilisateur.'
+                    });
+                else res.send(data);
+            });
+        }
+    });
+}
 
+exports.removeUserFromConv = (req, res) => {
+    //traitement pour trouver les utilisateurs et avoir leur id
+    utilisateur.findByNomUtilisateur(req.body.nomUtilisateur, (err, data) => {
+        if (err) {
+            res.status(500).send({
+                message:
+                    err.message || 'l\'utilisateur : ' + req.body.nomUtilisateur + ' n\'existe pas.'
+            });
+        }
+        else {
+            conversation.removeUser(req.params.idConversation, data.tagUtilisateur, (err, data) => {
+                if (err)
+                    res.status(500).send({
+                        message:
+                            err.message || 'Une erreur est survenue lors de la suppression de l\'utilisateur.'
+                    });
+                else res.send(data);
+            });
+        }
+    });
+}

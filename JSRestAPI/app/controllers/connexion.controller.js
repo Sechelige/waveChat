@@ -15,14 +15,6 @@ exports.createNumcheck = (req, res) => {
         else res.send(data);
     });
 
-    /*user.getEmailByUser(+req.params.tagUtilisateur, (err, email) => {
-        if (err) {
-            console.log("Erreur lors de la récupération de l'email : ", err);
-            return err;
-        } else {
-        }
-    });*/
-
     console.log("Email de l'utilisateur : ", req.params.email);
     //send numCheck to the user's email
     var mailOptions = {
@@ -43,21 +35,22 @@ exports.createNumcheck = (req, res) => {
 };
 
 exports.okNumcheck = (req, res) => {
-    connexion.getNumCheck(req.params.email, (err, numCheck) => {
+    connexion.getNumCheck(req.params.email, (err, data) => {
         if (err) {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the connexion."
+                message: err.message || "Some error occurred while retrieving the connexion."
             });
         }
         else {
             var numCheckUser = req.body.numCheck;
-            if (numCheckUser == numCheck) {
-                res.send(true);
-            } else {
-                res.send(false);
+            var numCheckDB = data.numCheck;
+            var tagUtilisateur = data.tagUtilisateur;
+            if (numCheckUser == numCheckDB) {
+                res.status(500).send({ tagUtilisateur: tagUtilisateur, test: true });
+            }
+            else {
+                res.send(tagUtilisateur, false);
             }
         }
-    }
-    );
+    });
 };
-

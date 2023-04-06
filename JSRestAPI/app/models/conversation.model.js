@@ -1,7 +1,7 @@
 const sql = require("./db.js");
 
 // constructor
-const Conversation = function(conversation) {
+const Conversation = function (conversation) {
     this.idConversation = conversation.idConversation;
     this.nomConversation = conversation.nomConversation;
     this.descConv = conversation.descConv;
@@ -29,7 +29,7 @@ Conversation.createWithUsers = (newConversation, tagUtilisateur, result) => {
             });
         }
         console.log("created conversation: ", { id: res.insertId, ...newConversation });
-        result(null, { id: res.insertId, ...newConversation, tagUtilisateur: tagUtilisateur});
+        result(null, { id: res.insertId, ...newConversation, tagUtilisateur: tagUtilisateur });
     });
 }
 
@@ -37,49 +37,49 @@ Conversation.getAllConversation = result => {
     sql.query(`
     SELECT *
     FROM Conversation;`
-    , (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+        , (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
 
-        if (res.length) {
-            console.log("found conversation: ", res);
-            result(null, res);
-            return;
-        }
-    });
+            if (res.length) {
+                console.log("found conversation: ", res);
+                result(null, res);
+                return;
+            }
+        });
 }
 
 Conversation.getByUser = (tagUtilisateur, result) => {
     sql.query(`
-    SELECT conv.idConversation, conv.nomConversation, msg.contenuMessage
-FROM utilisateursConv uc
-INNER JOIN Conversation conv ON uc.idConversation = conv.idConversation
-INNER JOIN Message msg ON uc.idConversation = msg.idConversation AND msg.idMessage = 
-(
-   SELECT MAX(idMessage)
-   FROM Message
-   WHERE idConversation = uc.idConversation
-)
-INNER JOIN Utilisateur u ON uc.tagUtilisateur = u.tagUtilisateur
-WHERE u.tagUtilisateur = ${tagUtilisateur}
-ORDER BY msg.dateMessage DESC, msg.heureMessage DESC;
+    SELECT conv.idConversation, conv.nomConversation, msg.contenuMessage, u.nomUtilisateur, msg.dateMessage, msg.heureMessage
+    FROM utilisateursConv uc
+    INNER JOIN Conversation conv ON uc.idConversation = conv.idConversation
+    INNER JOIN Message msg ON uc.idConversation = msg.idConversation AND msg.idMessage = 
+    (
+    SELECT MAX(idMessage)
+    FROM Message
+    WHERE idConversation = uc.idConversation
+    )
+    INNER JOIN Utilisateur u ON uc.tagUtilisateur = u.tagUtilisateur
+    WHERE u.tagUtilisateur = ${tagUtilisateur}
+    ORDER BY msg.dateMessage DESC, msg.heureMessage DESC;
 `
-    , (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+        , (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
 
-        if (res.length) {
-            console.log("found conversation: ", res);
-            result(null, res);
-            return;
-        }
-    });
+            if (res.length) {
+                console.log("found conversation: ", res);
+                result(null, res);
+                return;
+            }
+        });
 }
 
 Conversation.getById = (idConversation, result) => {
@@ -87,19 +87,19 @@ Conversation.getById = (idConversation, result) => {
     SELECT *
     FROM Conversation
     WHERE idConversation = ${idConversation};`
-    , (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+        , (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
 
-        if (res.length) {
-            console.log("found conversation: ", res);
-            result(null, res);
-            return;
-        }
-    });
+            if (res.length) {
+                console.log("found conversation: ", res);
+                result(null, res);
+                return;
+            }
+        });
 }
 
 Conversation.updateById = (idConversation, conversation, result) => {
@@ -164,37 +164,52 @@ Conversation.getLastMessage = (idConversation, result) => {
     WHERE idConversation = ${idConversation}
     ORDER BY dateMessage DESC
     LIMIT 1;`
-    , (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
+        , (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
 
-        if (res.length) {
-            console.log("found conversation: ", res);
-            result(null, res);
-            return;
-        }
-    });
+            if (res.length) {
+                console.log("found conversation: ", res);
+                result(null, res);
+                return;
+            }
+        });
 }
 
+Conversation.addUser = (idConversation, tagUtilisateur, result) => {
+    sql.query(`
+    INSERT INTO UtilisateursConv (idConversation, tagUtilisateur)
+    VALUES (${idConversation},${tagUtilisateur});`
+        , (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
 
-// TEST DE NINO POUR ADDUSER
-// Conversation.addUser = (idConversation, tagUtilisateur, result) => {
-//     sql.query(`
-//     INSERT INTO UtilisateursConv (idConversation, tagUtilisateur)
-//     VALUES (${idConversation},${tagUtilisateur});`
-//     , (err, res) => {
-//         if (err) {
-//             console.log("error: ", err);
-//             result(err, null);
-//             return;
-//         }
+            console.log("added user to conversation: ", { id: idConversation, ...tagUtilisateur });
+            result(null, { id: idConversation, ...tagUtilisateur });
+        });
+}
 
-//         console.log("added user to conversation: ", { id: idConversation, ...tagUtilisateur });
-//         result(null, { id: idConversation, ...tagUtilisateur });
-//     });
-// }
+Conversation.removeUser = (idConversation, tagUtilisateur, result) => {
+    sql.query(`
+    DELETE FROM UtilisateursConv
+    WHERE idConversation = ${idConversation} AND tagUtilisateur = ${tagUtilisateur};`
+        , (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(err, null);
+                return;
+            }
+
+            console.log("removed user from conversation: ", { id: idConversation, ...tagUtilisateur });
+            result(null, { id: idConversation, ...tagUtilisateur });
+        });
+}
+
 
 module.exports = Conversation;
