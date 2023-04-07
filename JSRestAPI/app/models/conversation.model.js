@@ -55,7 +55,7 @@ Conversation.getAllConversation = result => {
 Conversation.getByUser = (tagUtilisateur, result) => {
     sql.query(`
     SELECT conv.idConversation, conv.nomConversation, msg.contenuMessage, u.nomUtilisateur, msg.dateMessage, msg.heureMessage
-    FROM utilisateursConv uc
+    FROM UtilisateursConv uc
     INNER JOIN Conversation conv ON uc.idConversation = conv.idConversation
     INNER JOIN Message msg ON uc.idConversation = msg.idConversation AND msg.idMessage = 
     (
