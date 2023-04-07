@@ -4,8 +4,10 @@
 
 - get utilisateur par nom d'utilisateur (en plus de mail) -> ok
 - Route avec conversation et son dernier message
-- update conv avec utilisateur seul (nom d'utilisateur)
-- update conv avec noms d'utilisateur et non des codes 
+
 - id de l'utilisateur dans la réponse du post qui renvoie true, pour pouvoir l'identifier directement dans l'appli
+
+- update conv avec utilisateur seul (nom d'utilisateur)
+- update conv avec noms d'utilisateur et non des codes
 
 

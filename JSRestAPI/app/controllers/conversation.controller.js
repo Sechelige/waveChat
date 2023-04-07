@@ -1,4 +1,6 @@
 const conversation = require('../models/conversation.model.js');
+const user = require('../models/user.model.js');
+
 const message = require('../models/message.model.js');
 const utilisateur = require('../models/user.model.js');
 //Permet de créer une conversation avec deux utilisateurs dans la base de données
@@ -13,19 +15,12 @@ exports.createGroupeConversation = (req, res) => {
         });
     }
 
-    if (req.body.nomsUtilisateur.length < 2) {
+    if (req.body.tabTagUtilisateur.length < 2) {
         res.status(400).send({
             message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
         });
     }
-    else {
-        tabTagUtilisateur = [];
-        //traitement pour trouver les utilisateurs et avoir leur id
-        for (user in req.body.nomsUtilisateur) {
-            utilisateur.findByNomUtilisateur(req.body.nomsUtilisateur[user], (err, data) => { tabTagUtilisateur.push(data.tagUtilisateur); });
-        }
-    }
-
+    
     // Create a Conversation
     const nConversation = new conversation({
         nomConversation: req.body.nomConversation,
