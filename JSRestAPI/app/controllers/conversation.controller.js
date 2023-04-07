@@ -1,8 +1,6 @@
 const conversation = require('../models/conversation.model.js');
 const user = require('../models/user.model.js');
 
-const message = require('../models/message.model.js');
-const utilisateur = require('../models/user.model.js');
 //Permet de créer une conversation avec deux utilisateurs dans la base de données
 //route : /app/conversation/user/:tagUtilisateur1/:tagUtilisateur2 (POST)
 //
