@@ -47,12 +47,7 @@ exports.createGroupeConversation = (req, res) => {
                 idConversation: data.id,
                 tagUtilisateur: 12
             });
-
-<<<<<<< HEAD
             message.createByConvByUser(nMessage, data.id, 12, (err, data) => {});
-=======
-            message.createByConvByUser(nMessage, data.id, 8, (err, data) => { });
->>>>>>> 897a54aad947f13d8154c0d9acfe90b3f2156557
             res.send(data);
         }
     });
