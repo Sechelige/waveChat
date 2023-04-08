@@ -10,13 +10,10 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                     contenuMessage = contenuMessage.substring(0, 15) + "...";
                }
 
-               // format 2023-04-06T22:00:00.000Z to 06/04/2023
-               var formattedDate = chat.dateMessage.substring(8, 10);
-               formattedDate += "/";
-               formattedDate += chat.dateMessage.substring(5, 7);
-               formattedDate += "/";
-               formattedDate += chat.dateMessage.substring(0, 4);
-               chat.dateMessage = formattedDate;
+               const date = new Date(chat.dateMessage);
+               const options = { year: "numeric", month: "long", day: "numeric" };
+               chat.dateMessage = date.toLocaleDateString("fr-FR", options);
+               
 
                const containerChat = document.createElement("div");
                containerChat.setAttribute("data-convId", chat.idConversation);
@@ -36,7 +33,7 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
 
                const lastMessage = document.createElement("p");
                lastMessage.classList.add("lastMessage");
-               lastMessage.textContent = contenuMessage;
+               lastMessage.textContent = `${chat.nomUtilisateur} : ${contenuMessage}`;
 
                const dateMessage = document.createElement("p");
                dateMessage.classList.add("dateMessage");
