@@ -32,7 +32,7 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
 
                const lastMessage = document.createElement("p");
                lastMessage.classList.add("lastMessage");
-               lastMessage.textContent = `${chat.nomUtilisateur} : ${contenuMessage}`;
+               lastMessage.textContent = contenuMessage;
 
                const dateMessage = document.createElement("p");
                dateMessage.classList.add("dateMessage");
@@ -40,6 +40,7 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
 
                const timeMessage = document.createElement("p");
                timeMessage.classList.add("timeMessage");
+               chat.heureMessage = chat.heureMessage.substring(0, 5);
                timeMessage.textContent = chat.heureMessage;
 
                groupChatText.appendChild(groupName);

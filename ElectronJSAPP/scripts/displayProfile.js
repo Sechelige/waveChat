@@ -1,4 +1,6 @@
 containerDiscussion.innerHTML = "";
+containerMessenger.style.display = "none";
+
 // Page used to display someone's profile
 //
 fetch(`${apiRootAddress}/app/user/${userId}`, {
