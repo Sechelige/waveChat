@@ -13,7 +13,6 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
                const date = new Date(chat.dateMessage);
                const options = { year: "numeric", month: "long", day: "numeric" };
                chat.dateMessage = date.toLocaleDateString("fr-FR", options);
-               
 
                const containerChat = document.createElement("div");
                containerChat.setAttribute("data-convId", chat.idConversation);
