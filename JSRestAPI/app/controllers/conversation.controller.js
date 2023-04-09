@@ -1,25 +1,45 @@
 const conversation = require('../models/conversation.model.js');
-const user = require('../models/user.model.js');
-
+const utilisateur = require('../models/user.model.js');
+const message = require('../models/message.model.js');
 //Permet de créer une conversation avec deux utilisateurs dans la base de données
 //route : /app/conversation/user/:tagUtilisateur1/:tagUtilisateur2 (POST)
 //
 
 exports.createGroupeConversation = (req, res) => {
-    // Validate request
-    if (!req.body) {
-        res.status(400).send({
-            message: 'Content can not be empty!'
-        });
-    }
 
-    if (req.body.tabTagUtilisateur.length < 2) {
-        res.status(400).send({
-            message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
-        });
-    }
-    
-    // Create a Conversation
+        // Validate request
+        if (!req.body) {
+            res.status(400).send({
+                message: 'Content can not be empty!'
+            });
+        }
+        if (req.body.nomsUtilisateur.length < 2) {
+            res.status(400).send({
+                message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
+            });
+        }
+
+    async function createConv(tabNomUtilisateur) {
+        let tabTagUtilisateur = [];
+        for (let i = 0; i < tabNomUtilisateur.length; i++) {
+            await utilisateur.findByNomUtilisateur(tabNomUtilisateur[i], (err, data) => {
+                if (err) {
+                    if (err.kind === "not_found") {
+                        res.status(404).send({
+                            message: `Utilisateur non trouvé avec le nom d'utilisateur ${tabNomUtilisateur[i]}.`
+                        });
+                    } else {
+                        res.status(500).send({
+                            message: "Erreur lors de la récupération de l'utilisateur avec le nom d'utilisateur " + tabNomUtilisateur[i]
+                        });
+                    }
+                }
+                else {
+                    tabTagUtilisateur.push(data.tagUtilisateur);
+                }
+            });
+        }
+            // Create a Conversation
     const nConversation = new conversation({
         nomConversation: req.body.nomConversation,
         descConv: req.body.descConv,
@@ -27,7 +47,7 @@ exports.createGroupeConversation = (req, res) => {
     });
 
     // Save Conversation in the database
-    conversation.createWithUsers(nConversation, tabTagUtilisateur, function (err, data) {
+    await conversation.createWithUsers(nConversation, tabTagUtilisateur, function (err, data) {
         if (err)
             res.status(500).send({
                 message: err.message || 'Une erreur est survenue lors de la création de la conversation.'
@@ -45,6 +65,8 @@ exports.createGroupeConversation = (req, res) => {
             res.send(data);
         }
     });
+ }
+    createConv(req.body.nomsUtilisateur);
 }
 
 
