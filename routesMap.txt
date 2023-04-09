@@ -31,4 +31,3 @@ ensuite dans le terminal :  $ screen -r //pour voir les ecrans qui tourne en arr
                             $ screen -r "nom de l'ecran" //pour se connecter a un ecran en particulier
                             $ lancer la commande : $ node ~/wavechat/JSRestAPI/server.js //pour lancer le serveur si il est en erreur
                             //fermer le terminal et normalement le serveur est en marche
-
