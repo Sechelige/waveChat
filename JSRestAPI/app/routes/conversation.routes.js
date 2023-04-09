@@ -6,7 +6,7 @@ module.exports = app => {
     // Permet de créer une conversation entre deux utilisateurs dans la base de données
     //router.post('/user/:tagUtilisateur1/:tagUtilisateur2', conversation.createWithUser);
 
-    router.post('/user', conversation.createGroupeConversation);
+    router.post('/createConv', conversation.createGroupeConversation);
 
     // Permet de récupérer toutes les conversations de la base de données
     router.get('/', conversation.get);
