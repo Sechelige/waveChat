@@ -144,6 +144,18 @@ a {
      margin: 0;
 }
 
+.dateMessage {
+     color: #907ad6;
+     height: auto;
+     margin: 0;
+}
+
+.timeMessage {
+     color: #907ad6;
+     height: auto;
+     margin: 0;     
+}
+
 input[type="text"] {
      background-color: transparent;
      border: none;

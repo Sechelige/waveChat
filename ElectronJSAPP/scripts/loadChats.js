@@ -3,9 +3,19 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      .then((response) => response.json())
      .then((data) => {
           data.forEach((chat) => {
+               // convert to string
+               var contenuMessage = chat.contenuMessage.toString();
+               // if the message is too long, cut it
+               if (contenuMessage.length > 15) {
+                    contenuMessage = contenuMessage.substring(0, 15) + "...";
+               }
+
+               const date = new Date(chat.dateMessage);
+               const options = { year: "numeric", month: "long", day: "numeric" };
+               chat.dateMessage = date.toLocaleDateString("fr-FR", options);
+
                const containerChat = document.createElement("div");
                containerChat.setAttribute("data-convId", chat.idConversation);
-               // containerChat.setAttribute("data-isSelected", "false");
                containerChat.classList.add("containerChat");
 
                const groupChatImage = document.createElement("img");
@@ -22,10 +32,22 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
 
                const lastMessage = document.createElement("p");
                lastMessage.classList.add("lastMessage");
-               lastMessage.textContent = "Dernier message";
+               lastMessage.textContent = contenuMessage;
+
+               const dateMessage = document.createElement("p");
+               dateMessage.classList.add("dateMessage");
+               dateMessage.textContent = chat.dateMessage;
+
+               const timeMessage = document.createElement("p");
+               timeMessage.classList.add("timeMessage");
+               chat.heureMessage = chat.heureMessage.substring(0, 5);
+               timeMessage.textContent = chat.heureMessage;
 
                groupChatText.appendChild(groupName);
                groupChatText.appendChild(lastMessage);
+               groupChatText.appendChild(dateMessage);
+               groupChatText.appendChild(timeMessage);
+
 
                containerChat.appendChild(groupChatImage);
                containerChat.appendChild(groupChatText);
@@ -63,7 +85,6 @@ fetch(`${apiRootAddress}/app/conversation/conv/user/${userId}`)
      });
 
 function loadMessagesClick(convId) {
-     // resfresh every 0.5s
      fetch(`${apiRootAddress}/app/message/conv/${convId}`)
           .then((response) => response.json())
           .then((data) => {
