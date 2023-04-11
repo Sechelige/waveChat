@@ -39,6 +39,7 @@ fetch(`${apiRootAddress}/app/user/${userId}`)
             .then(response => response.json())
             .then(data => {
                 usernameStatus.innerText = data.nomUtilisateur;
+                nomUtilisateur = data.nomUtilisateur;
             })
             .catch(error => console.log("Error fetching user:", error));
 containerTop.appendChild(usernameStatus);
@@ -88,11 +89,6 @@ textNoChatSelected.innerText =
 containerDiscussion.appendChild(textNoChatSelected);
 
 const scriptContainerMessages = document.createElement("script");
-scriptContainerMessages.setAttribute(
-     "src",
-     "scripts/containerMessagesScrolledDown.js"
-);
-containerDiscussion.appendChild(scriptContainerMessages);
 document.body.appendChild(containerDiscussion);
 
 const containerMessenger = document.createElement("div");
