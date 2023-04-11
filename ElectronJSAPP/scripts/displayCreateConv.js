@@ -80,7 +80,7 @@ formConv.appendChild(formConvSubmit);
 // if the button is clicked, the conversation is created, and the user is redirected to the conversation
 formConvSubmit.addEventListener("click", function () {
     // array of users filled with usernames which are in every divs with the username and profile picture
-    var users = [];
+    var users = [nomUtilisateur];
     var divUsers = document.querySelectorAll("#divUser");
     divUsers.forEach(function (divUser) {
         users.push(divUser.querySelector("#divUserName").innerText);
@@ -89,20 +89,23 @@ formConvSubmit.addEventListener("click", function () {
     if (formConvName.value != "" && formConvDescription.value != "" && users.length > 0) {
         // create the conversation
         if (formConvName.value != "" && formConvDescription.value != "") {
-            fetch("http://grxnd3r.freeboxos.fr:26500/app/conversation", {
+            let script = document.createElement("script");
+            script.setAttribute("src", "scripts/displayWave.js");
+            document.head.appendChild(script);
+            console.log("users : " + users)
+            fetch("http://grxnd3r.freeboxos.fr:26500/app/conversation/createConv/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    nom: formConvName.value,
-                    description: formConvDescription.value,
-                    nomUtilisateur: users,
+                    nomConversation: formConvName.value,
+                    descConv: formConvDescription.value,
+                    nomsUtilisateur: users,
+                    urlImage: "none"
                 }),
             })
-            // end of the fetch
         } else {
-            // if the group name or description is empty, change text of the button to "Veuillez remplir tous les champs"
             formConvSubmit.innerText = "Veuillez remplir tous les champs";
         }
     }
