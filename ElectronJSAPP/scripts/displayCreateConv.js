@@ -31,7 +31,7 @@ formConv.appendChild(formConvUsers);
 formConvUsers.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
         // if the user exists, store it's username in a variable
-        fetch("http://grxnd3r.freeboxos.fr:26500/app/user/email/" + formConvUsers.value)
+        fetch("http://grxnd3r.freeboxos.fr:26500/app/user/email/" + formConvUsers.value.toLowerCase)
             .then(function (response) {
                 return response.json();
             })
