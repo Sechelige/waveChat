@@ -9,20 +9,13 @@ containerDiscussion.appendChild(formConv);
 var formConvName = document.createElement("input");
 formConvName.setAttribute("type", "text");
 formConvName.setAttribute("id", "formConvName");
-formConvName.setAttribute("placeholder", "Nom de la conversation");
+formConvName.setAttribute("placeholder", "Groupe");
 formConv.appendChild(formConvName);
-
-var formConvDescription = document.createElement("input");
-formConvDescription.setAttribute("type", "text");
-formConvDescription.setAttribute("id", "formConvDescription");
-formConvDescription.setAttribute("placeholder", "Description de la conversation");
-formConv.appendChild(formConvDescription);
-
 
 var formConvUsers = document.createElement("input");
 formConvUsers.setAttribute("type", "text");
 formConvUsers.setAttribute("id", "formConvUsers");
-formConvUsers.setAttribute("placeholder", "Ajouter un utilisateur");
+formConvUsers.setAttribute("placeholder", "Utilisateurs");
 formConv.appendChild(formConvUsers);
 
 // when pressing enter, a div with the username and it's profile picture is created, and the input field is cleared. The user can then add another user. 
@@ -31,7 +24,7 @@ formConv.appendChild(formConvUsers);
 formConvUsers.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
         // if the user exists, store it's username in a variable
-        fetch("http://grxnd3r.freeboxos.fr:26500/app/user/email/" + formConvUsers.value.toLowerCase)
+        fetch("http://grxnd3r.freeboxos.fr:26500/app/user/email/" + formConvUsers.value)
             .then(function (response) {
                 return response.json();
             })
@@ -85,10 +78,14 @@ formConvSubmit.addEventListener("click", function () {
     divUsers.forEach(function (divUser) {
         users.push(divUser.querySelector("#divUserName").innerText);
     });
+    // remove double usernames
+    users = users.filter(function (item, pos) {
+        return users.indexOf(item) == pos;
+    })
     // if the group name and description are not empty, and if there is at least one user in the array of users, create the conversation
-    if (formConvName.value != "" && formConvDescription.value != "" && users.length > 0) {
+    if (formConvName.value != "" && users.length > 0) {
         // create the conversation
-        if (formConvName.value != "" && formConvDescription.value != "") {
+        if (formConvName.value != "") {
             let script = document.createElement("script");
             script.setAttribute("src", "scripts/displayWave.js");
             document.head.appendChild(script);
@@ -100,7 +97,7 @@ formConvSubmit.addEventListener("click", function () {
                 },
                 body: JSON.stringify({
                     nomConversation: formConvName.value,
-                    descConv: formConvDescription.value,
+                    descConv: "none",
                     nomsUtilisateur: users,
                     urlImage: "none"
                 }),
@@ -120,5 +117,5 @@ containerDiscussion.appendChild(formConvUsersList);
 
 var formConvUsersListText = document.createElement("div");
 formConvUsersListText.setAttribute("id", "formConvUsersListText");
-formConvUsersListText.innerText = "Utilisateurs du groupe";
+formConvUsersListText.innerText = "Utilisateurs du groupe (";
 formConvUsersList.appendChild(formConvUsersListText);

@@ -15,18 +15,6 @@ inputElement.addEventListener("keyup", function (event) {
                     dateMessage: currentDate,
                     heureMessage: currentTime,
                };
-               // Affichage local pour réduire latence visuelle
-               containerDiscussion.innerHTML += `<div class="messageBox">
-                                                <img class="profilePictureMessage" src="images/groupChat.png">
-                                                <div class="textMessage">
-                                                <p class="usernameChat">...</p>
-                                                <p class="messageContent">${inputText}</p>
-                                                </div>
-                                                </div>`
-               let objDiv = document.getElementById(
-                    "containerDiscussion"
-               );
-               objDiv.scrollTop = objDiv.scrollHeight;
                ///
 
                fetch(
