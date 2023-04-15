@@ -20,5 +20,4 @@ function createWindow() {
 }
 
 // DATABASE TESTS
-
 app.whenReady().then(createWindow);
