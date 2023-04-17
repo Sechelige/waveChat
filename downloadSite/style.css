@@ -48,6 +48,7 @@ header {
     background-color: rgba(44, 42, 74, .8);
     backdrop-filter: blur(4px);
     position: fixed;
+    z-index: 1;
 }
 
 footer {
@@ -76,7 +77,6 @@ header li {
     margin-right: 20px;
     float: left;
     font-size: 20px;
-    
 }
 
 header li a {
