@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-body {
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+html {
     background: rgb(44, 42, 74);
     background: linear-gradient(47deg, rgba(44, 42, 74, 1) 0%, rgba(79, 81, 140, 1) 52%, rgba(44, 42, 74, 1) 100%);
     font-family: "Open Sans", sans-serif;
@@ -79,18 +86,22 @@ header li a:hover {
     /* center div in page */
     margin: 50px auto;
     border-radius: 50px;
-    width: 60vw;
-    height: 60vh;
+    width: 65%;
+    padding:50px;
     background : white;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background is backgroundMainContent.svg */
+    background-image: url("backgroundMainContent.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 #downloadButton {
     color : white;
     background-color: #907ad6;
-    width: 400px;
+    width: 20vw;
     height: 80px;
     border-radius: 15px;
     text-align: center;
@@ -100,9 +111,40 @@ header li a:hover {
     font-size: 20px;
     /* strong shadows*/
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    padding:0.2vw;
 }
+
 
 #dlLogo {
     height:50px;
     width:50px;
+}
+
+/* #appPreview img is 70% of it's div and centered, the image have to keep the same ratio */
+#appPreview {
+    position: relative;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contextAndButton {
+    /* flex column */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contextAndButton p {
+    background-color: #907ad6;
+    text-align: center;
+    font-size: 2vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color :white; 
+    border-radius: 15px;
+    padding : 0.2vw;
+    width: 20vw;
 }
