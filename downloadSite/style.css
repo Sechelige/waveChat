@@ -95,6 +95,7 @@ header li a:hover {
     /* background is backgroundMainContent.svg */
     background-image: url("backgroundMainContent.svg");
     background-repeat: no-repeat;
+    background-position: center;
     background-size: 100%;
 }
 
