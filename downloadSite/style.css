@@ -1,13 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+@font-face {
+    font-family: "Wave";
+    src: url("SonicEmpire-RLG6.woff");
 }
 
-html {
+
+html, body {
+    /* margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%; */
+
+    background: rgb(161,221,251);
+    background: linear-gradient(90deg, rgba(161,221,251,1) 0%, rgba(56,142,206,1) 50%, rgba(84,76,188,1) 100%);    
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* html {
     background: rgb(44, 42, 74);
     background: linear-gradient(47deg, rgba(44, 42, 74, 1) 0%, rgba(79, 81, 140, 1) 52%, rgba(44, 42, 74, 1) 100%);
     font-family: "Open Sans", sans-serif;
@@ -15,7 +33,7 @@ html {
     line-height: 1.42857143;
     margin: 0;
     padding: 0;
-}
+} */
 
 a {
     color: #ffffff;
@@ -26,6 +44,14 @@ header {
     width: 100%;
     height: 100px;
     background-color: #2c2a4a;
+}
+
+footer {
+    background-color: #2c2a4a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
 }
 
 /* links of the header displayed horizontally */
@@ -63,6 +89,28 @@ header li a:hover {
     background-color: #907ad6;
 }
 
+h1,h2{
+    text-align: center;
+}
+
+h1{
+    font-family: "Wave";
+    font-size: 10vw;
+    color: #2c2a4a;
+}
+
+h2{
+    color : red;
+}
+
+#title{
+    width: 100%;
+    height: 100%;
+    margin: auto; 
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
 #mainLogo {
     width: 70px;
     height: 70px;
@@ -85,9 +133,10 @@ header li a:hover {
 #mainContent {
     /* center div in page */
     margin: 50px auto;
+    margin-top: 65px;
     border-radius: 50px;
-    width: 65%;
-    padding:50px;
+    width: 75%;
+    padding: 50px;
     background : white;
     display: flex;
     justify-content: center;
@@ -102,14 +151,14 @@ header li a:hover {
 #downloadButton {
     color : white;
     background-color: #907ad6;
-    width: 20vw;
-    height: 80px;
-    border-radius: 15px;
+    width: 15vw;
+    height: 55px;
+    border-radius: 30px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items:center;
-    font-size: 20px;
+    font-size: 16px;
     /* strong shadows*/
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
     padding:0.2vw;
@@ -117,8 +166,8 @@ header li a:hover {
 
 
 #dlLogo {
-    height:50px;
-    width:50px;
+    height:35px;
+    width:35px;
 }
 
 /* #appPreview img is 70% of it's div and centered, the image have to keep the same ratio */
@@ -139,11 +188,10 @@ header li a:hover {
 }
 
 #contextAndButton p {
-    background-color: #907ad6;
     text-align: center;
-    font-size: 2vh;
+    font-size: 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     color :white; 
     border-radius: 15px;
     padding : 0.2vw;
