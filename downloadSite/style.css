@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+
 @font-face {
     font-family: "Wave";
     src: url("SonicEmpire-RLG6.woff");
@@ -91,22 +92,24 @@ header li a:hover {
 
 h1,h2{
     text-align: center;
+
 }
 
 h1{
     font-family: "Wave";
     font-size: 10vw;
     color: #2c2a4a;
+    letter-spacing: 5px;
 }
 
 h2{
-    color : red;
+    font-size: 30px;
+    color:#454779;
 }
 
 #title{
     width: 100%;
-    height: 100%;
-    margin: auto; 
+    height: 70%;
     margin-top: 60px;
     margin-bottom: 60px;
 }
