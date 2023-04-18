@@ -288,6 +288,7 @@ input{
     width: 10vw;
     border-radius: 15px;
     border-color: #4F518C;
+    margin-right: 1vw;
 }
 
 #form-content button{
