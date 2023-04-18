@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
 @font-face {
@@ -6,16 +5,15 @@
     src: url("../fonts/SonicEmpire-RLG6.woff") format("woff");
 }
 
+@font-face {
+    font-family: "Nunito";
+    src: url("../fonts/Nunito-Regular.woff") format("woff");
+}
 
 html, body {
-    /* margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%; */
-
     background: rgb(161,221,251);
     background: linear-gradient(90deg, rgba(161,221,251,1) 0%, rgba(56,142,206,1) 50%, rgba(84,76,188,1) 100%);    
-    font-family: "Open Sans", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     margin: 0;
