@@ -140,7 +140,6 @@ h2{
     align-items: center;
     /* background is backgroundMainContent.svg */
     background-image: url("../img/backgroundMainContent.svg");
-    background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
     box-shadow: 0 0 30px 0 rgba(0,0,0,0.7);
