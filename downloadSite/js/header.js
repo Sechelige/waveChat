@@ -11,6 +11,6 @@ header.innerHTML =
     <li><a href="equipe.html">L'équipe</a></li>
     <li><a href="contact.html">Contact</a></li>
 
-    <a id="downloadHeader" href="#h2content">Télécharger</a>
+    <a id="downloadHeader" href="index.html#h2content">Télécharger</a>
 </ul>
 </nav>`
