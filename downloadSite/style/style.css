@@ -227,8 +227,18 @@ h2{
     position: relative;
     /* margin left and right 20px */
     margin: 0 20px;
+    transition: 0.2s;
 }
 
+.photo img:hover {
+    width: 22vh;
+    height: 22vh;
+    border: 3px solid #907ad6;
+    margin: 0 18px;
+    /* strong shadows*/
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    cursor: pointer;
+}
 /* display elements in the div horizontally */
 .team-photos {
     text-align: center;
