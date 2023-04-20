@@ -17,7 +17,7 @@ fetch(`${apiRootAddress}/app/user/${userId}`, {
 
           const imgProfile = document.createElement("img");
           imgProfile.classList.add("profile_image");
-          imgProfile.src = "images/groupChat.png";
+          imgProfile.src = "icon.png";
           imgProfile.alt = "Profile image";
           divProfile.appendChild(imgProfile);
 
