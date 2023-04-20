@@ -80,7 +80,7 @@ header li a:hover {
     background-color: #907ad6;
 }
 
-h1,h2{
+h1,h2,h3{
     text-align: center;
 }
 
@@ -95,6 +95,11 @@ h1{
 
 h2{
     font-size: 30px;
+    color:#454779;
+}
+
+h3{
+    font-size: 25px;
     color:#454779;
 }
 
@@ -153,10 +158,10 @@ h2{
     border-radius: 50px;
     width: 75%;
     padding: 50px;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
     color: white;
     line-height: 2;
