@@ -1,5 +1,3 @@
-//https://www.bezkoder.com/node-js-rest-api-express-mysql/
-//https://smallstep.com/hello-mtls/doc/combined/express/nodejs
 const express = require('express');
 const cors = require('cors');
 const app = express();

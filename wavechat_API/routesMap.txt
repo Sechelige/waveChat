@@ -26,7 +26,7 @@ Gerer les connexion :
 - POST /connexion/okcon/{emailUser} : Permet de valider une demande de connexion en fonction de l'email de l'utilisateur -> revoie (true, false)
 
 si l'API ne fonctionne pas, il faut verifier que le serveur est bien en marche :
-- se connecter en ssh sur le serveur : ssh pi@wavechatapi.ddns.net //mot de passe : (demande a l'admin)
+- se connecter en ssh sur le serveur : ssh pi@wavechatapi.ddns.net //mot de passe : (demander a l'admin: @sechelige)
 ensuite dans le terminal :  $ screen -r //pour voir les ecrans qui tourne en arriere plan
                             $ screen -r "nom de l'ecran" //pour se connecter a un ecran en particulier
                             $ lancer la commande : $ node ~/wavechat/JSRestAPI/server.js //pour lancer le serveur si il est en erreur

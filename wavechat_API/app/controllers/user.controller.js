@@ -4,7 +4,6 @@ const nodemailer = require('../models/nodemailer');
 //Permet de créer un utilisateur dans la base de données
 //route : /app/user (POST)
 //
-//
 exports.create = (req, res) => {
     // Validate request
     if (!req.body) {

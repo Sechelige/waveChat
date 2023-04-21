@@ -2,6 +2,10 @@ const connexion = require("../models/connexion.models.js");
 const user = require("../models/user.model.js");
 const nodemailer = require("../models/nodemailer.js");
 
+//Permet de créer un code de vérification et de l'envoyer par mail à l'utilisateur
+//route : /app/connexion/numcheck/:email (POST)
+//
+
 exports.createNumcheck = (req, res) => {
 
     numCheck = Math.floor(Math.random() * 900000) + 100000;

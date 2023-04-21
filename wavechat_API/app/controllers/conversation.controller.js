@@ -4,10 +4,9 @@ const message = require('../models/message.model.js');
 //Permet de créer une conversation avec deux utilisateurs dans la base de données
 //route : /app/conversation/user/:tagUtilisateur1/:tagUtilisateur2 (POST)
 //
-
 exports.createGroupeConversation = (req, res) => {
 
-        // Validate request
+        // Validation de la requête
         if (!req.body) {
             res.status(400).send({
                 message: 'Content can not be empty!'
@@ -18,7 +17,7 @@ exports.createGroupeConversation = (req, res) => {
                 message: 'Il faut au moins deux utilisateurs pour créer une conversation.'
             });
         }
-
+    // Création de la conversation
     async function createConv(tabNomUtilisateur) {
         let tabTagUtilisateur = [];
         for (let i = 0; i < tabNomUtilisateur.length; i++) {
@@ -39,7 +38,7 @@ exports.createGroupeConversation = (req, res) => {
                 }
             });
         }
-            // Create a Conversation
+    //
     const nConversation = new conversation({
         nomConversation: req.body.nomConversation,
         descConv: req.body.descConv,
@@ -169,6 +168,9 @@ exports.deleteConv = (req, res) => {
     });
 }
 
+//Permet d'ajouter un utilisateur à une conversation
+//route : /app/conversation/conv/:idConversation (POST)
+//
 exports.addUserToConv = (req, res) => {
     //traitement pour trouver les utilisateurs et avoir leur id
     utilisateur.findByNomUtilisateur(req.body.nomUtilisateur, (err, data) => {

@@ -1,7 +1,7 @@
 {
-  "name": "Wave",
+  "name": "wave",
   "version": "1.0.0",
-  "description": "",
+  "description": "Une application de chat",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,5 +22,11 @@
     "electron-winstaller": "^5.1.0",
     "oracledb": "^5.5.0",
     "sequelize": "^6.28.0"
+  },
+  "build": {
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
   }
 }
