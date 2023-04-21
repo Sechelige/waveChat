@@ -37,7 +37,7 @@ inputElement.addEventListener("keyup", function (event) {
                                    let messages = "";
                                    for (let i = 0; i < data.length; i++) {
                                         messages += `<div class="messageBox">
-                                                        <img class="profilePictureMessage" src="images/groupChat.png">
+                                                        <img class="profilePictureMessage" src="icon.png">
                                                         <div class="textMessage">
                                                         <p class="usernameChat">${data[i].nomUtilisateur}</p>
                                                         <p class="messageContent">${data[i].contenuMessage}</p>

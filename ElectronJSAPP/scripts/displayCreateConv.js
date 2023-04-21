@@ -42,7 +42,7 @@ formConvUsers.addEventListener("keyup", function (event) {
                     divUser.appendChild(divUserPic);
                     var imgUserPic = document.createElement("img");
                     imgUserPic.setAttribute("id", "imgUserPic");
-                    imgUserPic.setAttribute("src", `images/groupChat.png`);
+                    imgUserPic.setAttribute("src", `icon.png`);
                     divUserPic.appendChild(imgUserPic);
                     var divUserName = document.createElement("div");
                     divUserName.setAttribute("id", "divUserName");
